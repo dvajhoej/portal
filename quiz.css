@@ -546,6 +546,17 @@ body {
   gap: 0.6rem;
 }
 
+.site-disclaimer-footer {
+  max-width: 84ch;
+  margin: 0 auto 2rem;
+  padding: 0 1.5rem;
+  color: var(--q-muted);
+  font-size: 0.72rem;
+  line-height: 1.45;
+  text-align: center;
+  opacity: 0.95;
+}
+
 @media (max-width: 640px) {
   #app {
     padding: 1.15rem 0.85rem 3rem;
@@ -575,5 +586,10 @@ body {
 
   .result-breakdowns {
     grid-template-columns: 1fr;
+  }
+
+  .site-disclaimer-footer {
+    padding: 0 0.85rem 0.25rem;
+    font-size: 0.7rem;
   }
 }

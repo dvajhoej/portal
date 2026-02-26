@@ -285,6 +285,13 @@
       color: var(--muted);
       font-size: 0.78rem;
     }
+    footer .site-disclaimer {
+      margin: 0.55rem auto 0;
+      max-width: 72ch;
+      font-size: 0.7rem;
+      line-height: 1.45;
+      opacity: 0.95;
+    }
   </style>
 </head>
 
@@ -326,17 +333,13 @@
             <polyline points="6 9 12 15 18 9" />
           </svg>
         </div>
-        <div class="card-desc">Forklarer hvorfor test er nødvendigt, og hvordan risiko og konsekvens påvirker
-          testindsatsen.</div>
+        <div class="card-desc">Test bruges til at reducere risiko, før fejl rammer brugere eller drift. Hvor meget man tester, afhænger af konsekvensen ved fejl.</div>
         <div class="card-details">
           <div class="card-details-inner">
             <div class="card-details-body">
-              <p><strong>Motivationen for test</strong> handler om at undgå fejl, der kan give store konsekvenser for
-                brugere, drift og økonomi.</p>
-              <p><strong>Eksempler på fejl</strong> bruges til at vise, at selv små fejl kan få stor effekt afhængigt af
-                systemets anvendelse.</p>
-              <p>Testindsatsen bør derfor planlægges ud fra <strong>risiko, pris og konsekvens</strong> frem for at
-                teste alt lige meget.</p>
+              <p><strong>Motivation for test</strong> handler om at finde fejl tidligt, før de skaber problemer for brugere, drift eller forretning.</p>
+              <p>Behovet for test afhænger af <strong>konsekvensen ved fejl</strong>, fordi ikke alle fejl har samme betydning.</p>
+              <p>I praksis bruges emnet til at prioritere test ud fra <strong>risiko og værdi</strong> i stedet for at teste alt ens.</p>
             </div>
           </div>
         </div>
@@ -350,17 +353,13 @@
             <polyline points="6 9 12 15 18 9" />
           </svg>
         </div>
-        <div class="card-desc">Giver et overblik over centrale testbegreber, testaktiviteter og de vigtigste
-          testniveauer.</div>
+        <div class="card-desc">Emnet samler de grundlæggende testbegreber og viser, hvordan testniveauer bruges til at kvalitetssikre software trin for trin.</div>
         <div class="card-details">
           <div class="card-details-inner">
             <div class="card-details-body">
-              <p>Emnet placerer <strong>test</strong> som en central aktivitet i udviklingsarbejdet, tæt koblet til
-                fejlretning og kvalitetssikring.</p>
-              <p>Det forklarer også, hvorfor <strong>total test</strong> i praksis er urealistisk, og hvorfor test i
-                stedet handler om at <strong>reducere risiko</strong>.</p>
-              <p>Der gives overblik over niveauer som <strong>unit, integration, system, acceptance</strong> og
-                <strong>regression</strong> test.</p>
+              <p><strong>Testbegreber og testniveauer</strong> giver et fælles sprog for, hvad der testes, og hvorfor det testes.</p>
+              <p>Emnet gør det tydeligt, at <strong>total test</strong> ikke er realistisk, så målet er at reducere risiko på en kontrolleret måde.</p>
+              <p>Det bruges til at skelne mellem fx <strong>unit, integration, system, acceptance</strong> og <strong>regression</strong> test i praksis.</p>
             </div>
           </div>
         </div>
@@ -374,17 +373,13 @@
             <polyline points="6 9 12 15 18 9" />
           </svg>
         </div>
-        <div class="card-desc">Forklarer hvordan et unit test-framework organiserer tests som kode med assertions og
-          test suites.</div>
+        <div class="card-desc">Et unit test-framework gør tests til en fast del af koden, så de kan køres automatisk og bruges aktivt under udvikling.</div>
         <div class="card-details">
           <div class="card-details-inner">
             <div class="card-details-body">
-              <p>Unit tests skrives som <strong>eksekverbar kode</strong>, så de kan køres igen og igen under
-                udviklingen.</p>
-              <p>Et test-framework samler <strong>assertions</strong>, test cases og test suites, så tests bliver
-                strukturerede og automatiserbare.</p>
-              <p>Arbejdet med <strong>unit tests</strong> hænger naturligt sammen med senere brug af
-                <strong>coverage og CI</strong>.</p>
+              <p><strong>Unit tests</strong> skrives som kode, så de kan køres igen hver gang noget ændres.</p>
+              <p>Et <strong>test-framework</strong> giver struktur med assertions, test cases og suites, så testen bliver ensartet og automatiserbar.</p>
+              <p>Det er særligt nyttigt, når teamet vil arbejde med hurtig feedback og senere koble test til <strong>CI og coverage</strong>.</p>
             </div>
           </div>
         </div>
@@ -409,16 +404,13 @@
             <polyline points="6 9 12 15 18 9" />
           </svg>
         </div>
-        <div class="card-desc">Beskriver system- og GUI-test som afprøvning af hele løsningen set udefra.</div>
+        <div class="card-desc">System- og GUI-test undersøger, om den færdige løsning virker for brugeren, når funktioner og grænseflade bruges samlet.</div>
         <div class="card-details">
           <div class="card-details-inner">
             <div class="card-details-body">
-              <p><strong>System- og GUI-test</strong> kontrollerer, om hele løsningen fungerer korrekt, når den bruges
-                som et færdigt system.</p>
-              <p>Testen fokuserer ofte på <strong>black-box</strong>-adfærd, hvor man vurderer input og output uden at
-                kigge i koden.</p>
-              <p>Den bruges både <strong>manuelt og automatiseret</strong>, især til brugerflows, integrationer og
-                acceptlignende test.</p>
+              <p><strong>System- og GUI-test</strong> vurderer løsningen som et samlet system, ikke kun enkelte funktioner isoleret.</p>
+              <p>Fokus er ofte på <strong>black-box-adfærd</strong>, hvor man tester input, output og brugerflows uden at læse koden.</p>
+              <p>Den bruges typisk ved validering af centrale funktioner, både <strong>manuelt</strong> og via <strong>automatisering</strong>.</p>
             </div>
           </div>
         </div>
@@ -432,16 +424,13 @@
             <polyline points="6 9 12 15 18 9" />
           </svg>
         </div>
-        <div class="card-desc">Forklarer hvad capture/playback-værktøjer gør, og hvorfor optagede GUI-tests kan være
-          skrøbelige.</div>
+        <div class="card-desc">Capture/playback kan gøre GUI-automatisering hurtig at starte på, men optagede tests bliver ofte skrøbelige, når grænsefladen ændrer sig.</div>
         <div class="card-details">
           <div class="card-details-inner">
             <div class="card-details-body">
-              <p><strong>Capture/playback-værktøjer</strong> optager brugerhandlinger under test og forsøger senere at
-                afspille dem automatisk.</p>
-              <p>Metoden kan være <strong>hurtig at komme i gang med</strong>, men tests bliver ofte følsomme over for
-                ændringer i UI, timing og miljø.</p>
-              <p>Emnet forklarer derfor både <strong>værdien og begrænsningerne</strong> ved optagede GUI-tests.</p>
+              <p><strong>Capture/playback</strong> optager klik og input, som senere afspilles som automatiserede tests.</p>
+              <p>Fordelen er hurtig opstart, men tests kan blive ustabile ved ændringer i <strong>UI, timing eller testmiljø</strong>.</p>
+              <p>Emnet bruges til at vurdere, hvornår <strong>optagede tests</strong> er nyttige, og hvornår mere robuste tests bør skrives manuelt.</p>
             </div>
           </div>
         </div>
@@ -455,17 +444,13 @@
             <polyline points="6 9 12 15 18 9" />
           </svg>
         </div>
-        <div class="card-desc">Beskriver Playwright som værktøj til automatiseret browser- og GUI-test med optagelse og
-          fejlsøgning.</div>
+        <div class="card-desc">Playwright bruges til automatiseret test af webgrænseflader og giver værktøjer til både opbygning, kørsel og fejlsøgning af tests.</div>
         <div class="card-details">
           <div class="card-details-inner">
             <div class="card-details-body">
-              <p><strong>Playwright</strong> bruges til at automatisere browserhandlinger og teste webgrænseflader på en
-                reproducerbar måde.</p>
-              <p>Værktøjet understøtter både håndskrevne tests og funktioner som <strong>codegen</strong>, der hjælper
-                med at oprette testskabeloner.</p>
-              <p>Funktioner som <strong>trace-visning</strong> og screenshots gør det lettere at fejlfinde, når en test
-                fejler.</p>
+              <p><strong>Playwright</strong> automatiserer browserhandlinger, så webflows kan testes ensartet og gentageligt.</p>
+              <p>Det understøtter både håndskrevne tests og hjælpemidler som <strong>codegen</strong> til at komme hurtigere i gang.</p>
+              <p>Ved fejl gør fx <strong>trace-visning</strong> og screenshots det lettere at forstå, hvad der skete under testkørslen.</p>
             </div>
           </div>
         </div>
@@ -490,17 +475,13 @@
             <polyline points="6 9 12 15 18 9" />
           </svg>
         </div>
-        <div class="card-desc">Giver et kort overblik over testtyper ud over funktionel test, fx performance, usability
-          og security.</div>
+        <div class="card-desc">Kvalitet handler ikke kun om korrekt funktion. Andre testformer bruges til at vurdere hastighed, brugervenlighed og sikkerhed.</div>
         <div class="card-details">
           <div class="card-details-inner">
             <div class="card-details-body">
-              <p>Emnet viser, at <strong>kvalitet</strong> ikke kun handler om funktioner, men også om hastighed,
-                brugervenlighed og sikkerhed.</p>
-              <p><strong>Performance test</strong> vurderer systemets opførsel under belastning, mens <strong>usability
-                  test</strong> fokuserer på brugeroplevelsen.</p>
-              <p><strong>Security test</strong> supplerer de øvrige testformer ved at finde svagheder, der kan udnyttes
-                eller skabe risiko.</p>
+              <p><strong>Andre testformer</strong> dækker kvalitetskrav, som ikke kan vurderes alene med funktionel test.</p>
+              <p><strong>Performance</strong> ser på hastighed og belastning, mens <strong>usability</strong> vurderer, hvor let systemet er at bruge.</p>
+              <p><strong>Security test</strong> supplerer de andre testtyper ved at finde svagheder, som kan skabe risiko eller misbrug.</p>
             </div>
           </div>
         </div>
@@ -514,17 +495,13 @@
             <polyline points="6 9 12 15 18 9" />
           </svg>
         </div>
-        <div class="card-desc">Forklarer hvordan integrationstest og API-test kontrollerer samspillet mellem systemets
-          dele.</div>
+        <div class="card-desc">Integrationstest og API-test bruges til at kontrollere, om systemets dele udveksler data og samarbejder korrekt.</div>
         <div class="card-details">
           <div class="card-details-inner">
             <div class="card-details-body">
-              <p><strong>Integrationstest</strong> bruges til at kontrollere, at moduler, services og databaser arbejder
-                korrekt sammen.</p>
-              <p><strong>API-test</strong> fokuserer på endpoints, data og kontrakter mellem systemdele, ofte med
-                dedikerede testværktøjer.</p>
-              <p><strong>Test-frameworks og mocks</strong> kan bruges til at udvide testscope gradvist og teste større
-                sammenhænge på en kontrolleret måde.</p>
+              <p><strong>Integrationstest</strong> undersøger, om flere komponenter fungerer korrekt sammen i en samlet løsning.</p>
+              <p><strong>API-test</strong> retter sig mod endpoints, dataformat og kontrakter mellem systemdele, ofte uden GUI.</p>
+              <p>De bruges især, når fejl opstår i <strong>samspillet mellem dele</strong> og ikke i én enkelt komponent.</p>
             </div>
           </div>
         </div>
@@ -538,16 +515,13 @@
             <polyline points="6 9 12 15 18 9" />
           </svg>
         </div>
-        <div class="card-desc">Beskriver brugen af mocking og dependency injection til at isolere kode i tests.</div>
+        <div class="card-desc">Mocking og dependency injection gør det lettere at teste kode isoleret, når den normalt afhænger af databaser, services eller andre komponenter.</div>
         <div class="card-details">
           <div class="card-details-inner">
             <div class="card-details-body">
-              <p><strong>Dependency injection (DI)</strong> gør det muligt at udskifte afhængigheder, så kode bliver
-                lettere at teste.</p>
-              <p><strong>Moq</strong> og lignende mocking-værktøjer bruges til at oprette testdobler, der simulerer
-                samarbejdspartnere i unit tests.</p>
-              <p>Emnet viser, hvordan <strong>isolerede tests</strong> og <strong>integrationsværktøjer</strong> kan
-                kombineres i praktisk testarbejde.</p>
+              <p><strong>Dependency Injection (DI)</strong> gør afhængigheder udskiftelige, så kode kan testes uden de rigtige eksterne systemer.</p>
+              <p><strong>Mocks</strong> og værktøjer som Moq simulerer samarbejdspartnere, så man kan kontrollere adfærd i en test.</p>
+              <p>Det er nyttigt, når man vil lave hurtige <strong>isolerede tests</strong> og samtidig bevare mulighed for større integrationstests senere.</p>
             </div>
           </div>
         </div>
@@ -572,17 +546,13 @@
             <polyline points="6 9 12 15 18 9" />
           </svg>
         </div>
-        <div class="card-desc">Forklarer hvordan coverage og CI bruges til at måle testomfang og automatisere
-          testkørsel.</div>
+        <div class="card-desc">Coverage og CI hjælper med at overvåge testomfang og køre tests automatisk, så fejl opdages tidligt ved nye ændringer.</div>
         <div class="card-details">
           <div class="card-details-inner">
             <div class="card-details-body">
-              <p><strong>Coverage</strong> viser, hvor stor en del af koden der bliver kørt af tests, og bruges som
-                indikator for testomfang.</p>
-              <p><strong>Continuous Integration (CI)</strong> automatiserer build og test, så fejl opdages tidligt ved
-                ændringer i koden.</p>
-              <p>Emnet forklarer, hvordan <strong>coverage og CI</strong> sammen understøtter en mere stabil og løbende
-                kvalitetssikring.</p>
+              <p><strong>Coverage</strong> viser, hvor meget af koden der bliver ramt af tests, og bruges som indikator for testomfang.</p>
+              <p><strong>Continuous Integration (CI)</strong> kører build og tests automatisk, når koden ændres, så fejl opdages hurtigt.</p>
+              <p>Sammen giver de bedre feedback om både <strong>testdækning</strong> og stabilitet i den daglige udviklingsproces.</p>
             </div>
           </div>
         </div>
@@ -596,17 +566,13 @@
             <polyline points="6 9 12 15 18 9" />
           </svg>
         </div>
-        <div class="card-desc">Beskriver særlige udfordringer ved test af software, der styrer eller afhænger af
-          hardware.</div>
+        <div class="card-desc">Når software afhænger af hardware, bliver teststrategien påvirket af udstyr, miljø og mulighed for at simulere virkelige forhold.</div>
         <div class="card-details">
           <div class="card-details-inner">
             <div class="card-details-body">
-              <p>Når software er koblet til <strong>fysiske enheder</strong>, kan test være sværere at gennemføre uden
-                adgang til det rigtige udstyr og miljø.</p>
-              <p><strong>Simulatorer og emulatorer</strong> bruges til at efterligne hardware, så tests kan køres mere
-                sikkert og gentageligt.</p>
-              <p>Emnet giver et overblik over, hvordan <strong>testmiljøet</strong> påvirker <strong>teststrategien</strong>
-                i systemer med hardwareafhængigheder.</p>
+              <p>Software, der bruger <strong>fysiske enheder</strong>, kan være svær at teste uden det rigtige hardware- og miljøsetup.</p>
+              <p><strong>Simulatorer og emulatorer</strong> kan bruges til at efterligne dele af systemet, så test bliver mere gentagelig og sikker.</p>
+              <p>Emnet er vigtigt, når man skal vælge en <strong>teststrategi</strong>, der balancerer realisme, pris og tilgængeligt udstyr.</p>
             </div>
           </div>
         </div>
@@ -617,7 +583,10 @@
     </div>
   </section>
 
-  <footer>Softwaretest &amp; Sikkerhed Forår 2026 &mdash; Techcollege</footer>
+  <footer>
+    Softwaretest &amp; Sikkerhed Forår 2026 &mdash; Techcollege
+    <p class="site-disclaimer">Ansvarsfraskrivelse: Alt indhold på denne side er genereret af AI baseret på Moodle-rummet og stilles til rådighed uden garanti for korrekthed, fuldstændighed eller aktualitet. Der påtages intet ansvar for fejl, mangler eller dispositioner truffet på baggrund af indholdet.</p>
+  </footer>
 
   <script>
     function toggle(card) {
