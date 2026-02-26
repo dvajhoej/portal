@@ -1,21 +1,28 @@
 <!DOCTYPE html>
 <html lang="da">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Fag — Techcollege Forår 2026</title>
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
     :root {
-      --bg:      #0f1117;
+      --bg: #0f1117;
       --surface: #1a1d27;
-      --border:  #2a2d3a;
-      --text:    #e2e4ed;
-      --muted:   #8b8fa8;
-      --c1:      #6c8cff;
-      --c2:      #ff7c5c;
-      --c3:      #4ecf9b;
+      --border: #2a2d3a;
+      --text: #e2e4ed;
+      --muted: #8b8fa8;
+      --c1: #6c8cff;
+      --c2: #ff7c5c;
+      --c3: #4ecf9b;
     }
 
     body {
@@ -37,6 +44,7 @@
       text-align: center;
       margin-bottom: 3.5rem;
     }
+
     .eyebrow {
       font-size: 0.75rem;
       font-weight: 600;
@@ -45,18 +53,21 @@
       color: var(--muted);
       margin-bottom: 0.6rem;
     }
+
     h1 {
       font-size: clamp(2rem, 5vw, 3.2rem);
       font-weight: 700;
       letter-spacing: -0.03em;
       line-height: 1.1;
     }
+
     h1 span {
       background: linear-gradient(90deg, var(--c1), var(--c3));
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
     }
+
     header p {
       margin-top: 1rem;
       color: var(--muted);
@@ -86,13 +97,23 @@
       flex-direction: column;
       gap: 1rem;
     }
+
     .course:hover {
       transform: translateY(-4px);
-      box-shadow: 0 16px 40px rgba(0,0,0,.45);
+      box-shadow: 0 16px 40px rgba(0, 0, 0, .45);
     }
-    .course.c1:hover { border-color: var(--c1); }
-    .course.c2:hover { border-color: var(--c2); }
-    .course.c3:hover { border-color: var(--c3); }
+
+    .course.c1:hover {
+      border-color: var(--c1);
+    }
+
+    .course.c2:hover {
+      border-color: var(--c2);
+    }
+
+    .course.c3:hover {
+      border-color: var(--c3);
+    }
 
     /* top gradient bar */
     .course::before {
@@ -102,9 +123,18 @@
       height: 3px;
       border-radius: 16px 16px 0 0;
     }
-    .course.c1::before { background: linear-gradient(90deg, var(--c1), color-mix(in srgb, var(--c1) 40%, var(--c3))); }
-    .course.c2::before { background: linear-gradient(90deg, var(--c2), color-mix(in srgb, var(--c2) 40%, #f5a623)); }
-    .course.c3::before { background: linear-gradient(90deg, var(--c3), color-mix(in srgb, var(--c3) 40%, var(--c1))); }
+
+    .course.c1::before {
+      background: linear-gradient(90deg, var(--c1), color-mix(in srgb, var(--c1) 40%, var(--c3)));
+    }
+
+    .course.c2::before {
+      background: linear-gradient(90deg, var(--c2), color-mix(in srgb, var(--c2) 40%, #f5a623));
+    }
+
+    .course.c3::before {
+      background: linear-gradient(90deg, var(--c3), color-mix(in srgb, var(--c3) 40%, var(--c1)));
+    }
 
     /* badge */
     .badge {
@@ -119,9 +149,21 @@
       border-radius: 99px;
       width: fit-content;
     }
-    .c1 .badge { background: color-mix(in srgb, var(--c1) 15%, transparent); color: var(--c1); }
-    .c2 .badge { background: color-mix(in srgb, var(--c2) 15%, transparent); color: var(--c2); }
-    .c3 .badge { background: color-mix(in srgb, var(--c3) 15%, transparent); color: var(--c3); }
+
+    .c1 .badge {
+      background: color-mix(in srgb, var(--c1) 15%, transparent);
+      color: var(--c1);
+    }
+
+    .c2 .badge {
+      background: color-mix(in srgb, var(--c2) 15%, transparent);
+      color: var(--c2);
+    }
+
+    .c3 .badge {
+      background: color-mix(in srgb, var(--c3) 15%, transparent);
+      color: var(--c3);
+    }
 
     .course-title {
       font-size: 1.35rem;
@@ -144,6 +186,7 @@
       gap: 0.4rem;
       margin-top: 0.25rem;
     }
+
     .course-topics li {
       font-size: 0.72rem;
       color: var(--muted);
@@ -162,10 +205,66 @@
       margin-top: 0.25rem;
       transition: gap .2s;
     }
-    .c1 .course-cta { color: var(--c1); }
-    .c2 .course-cta { color: var(--c2); }
-    .c3 .course-cta { color: var(--c3); }
-    .course:hover .course-cta { gap: 0.7rem; }
+
+    .c1 .course-cta {
+      color: var(--c1);
+    }
+
+    .c2 .course-cta {
+      color: var(--c2);
+    }
+
+    .c3 .course-cta {
+      color: var(--c3);
+    }
+
+    .course:hover .course-cta {
+      gap: 0.7rem;
+    }
+
+    /* ── Quiz banner ── */
+    .quiz-banner {
+      max-width: 960px;
+      width: 100%;
+      margin-bottom: 1.5rem;
+      background: color-mix(in srgb, var(--c1) 8%, var(--surface));
+      border: 1px solid color-mix(in srgb, var(--c1) 25%, var(--border));
+      border-radius: 14px;
+      padding: 1.2rem 1.6rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .quiz-banner-text {
+      font-size: 0.88rem;
+      color: var(--muted);
+    }
+
+    .quiz-banner-text strong {
+      color: var(--text);
+      display: block;
+      margin-bottom: 0.15rem;
+    }
+
+    .quiz-btn {
+      background: linear-gradient(90deg, var(--c1), color-mix(in srgb, var(--c1) 60%, var(--c3)));
+      border: none;
+      border-radius: 8px;
+      padding: 0.6rem 1.2rem;
+      color: #fff;
+      font-size: 0.82rem;
+      font-weight: 600;
+      text-decoration: none;
+      white-space: nowrap;
+      transition: opacity .2s;
+    }
+
+    .quiz-btn:hover {
+      opacity: 0.85;
+    }
 
     /* ── Footer ── */
     footer {
@@ -176,13 +275,23 @@
     }
   </style>
 </head>
+
 <body>
 
   <header>
     <p class="eyebrow">Techcollege · Forår 2026</p>
     <h1>Vælg et <span>fag</span></h1>
-    <p>Klik på et fag for at se emneoversigt og fagligt indhold.</p>
+    <p>Klik på et fag for at se emner, underemner og korte forklaringer af indholdet.</p>
   </header>
+
+  <!-- Combined quiz banner -->
+  <div class="quiz-banner">
+    <div class="quiz-banner-text">
+      <strong>Samlet quiz — alle 3 fag</strong>
+      180 spørgsmål i fælles bank &mdash; vælg Blandet, Nem, Øvet eller Avanceret
+    </div>
+    <a class="quiz-btn" href="quiz-alle.html">Start samlet quiz →</a>
+  </div>
 
   <div class="grid">
 
@@ -190,7 +299,7 @@
     <a class="course c1" href="kravspecifikation.html">
       <span class="badge">Fag 1</span>
       <div class="course-title">Kravspecifikation</div>
-      <p class="course-desc">Systemudviklingsmodeller, kravindsamling, prototyping, UML-diagrammer, accepttest og teknisk dokumentation.</p>
+      <p class="course-desc">Introduktion til hvordan krav indsamles, beskrives og dokumenteres gennem modeller, prototyper, UML og accepttest.</p>
       <ul class="course-topics">
         <li>Modeller &amp; Metoder</li>
         <li>Prototyping</li>
@@ -198,17 +307,14 @@
         <li>Accepttest</li>
         <li>Dokumentation</li>
       </ul>
-      <div class="course-cta">
-        Se emneoversigt
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-      </div>
+
     </a>
 
     <!-- Metodik -->
     <a class="course c2" href="metodik.html">
       <span class="badge">Fag 2</span>
       <div class="course-title">Metodik</div>
-      <p class="course-desc">Agile udviklingsmetoder, Scrum-framework, Extreme Programming, Test Driven Development og User Stories.</p>
+      <p class="course-desc">Kort overblik over agile arbejdsformer med fokus på Scrum, XP, TDD, user stories og fælles planlægning.</p>
       <ul class="course-topics">
         <li>Agilt manifest</li>
         <li>Scrum</li>
@@ -216,17 +322,14 @@
         <li>User Stories</li>
         <li>Planning Poker</li>
       </ul>
-      <div class="course-cta">
-        Se emneoversigt
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-      </div>
+
     </a>
 
     <!-- Softwaretest & Sikkerhed -->
     <a class="course c3" href="softwaretest-sikkerhed.html">
       <span class="badge">Fag 3</span>
       <div class="course-title">Softwaretest &amp; Sikkerhed</div>
-      <p class="course-desc">Unit testing, GUI- og systemtest med Playwright, integrationstest, regressionstest og sikkerhed i software.</p>
+      <p class="course-desc">Overblik over testtyper og testværktøjer fra unit test til GUI-, integrations- og sikkerhedstest i software.</p>
       <ul class="course-topics">
         <li>Unit Testing</li>
         <li>GUI &amp; Systemtest</li>
@@ -234,10 +337,7 @@
         <li>Integrationstest</li>
         <li>Sikkerhed</li>
       </ul>
-      <div class="course-cta">
-        Se emneoversigt
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-      </div>
+
     </a>
 
   </div>
@@ -245,4 +345,5 @@
   <footer>Techcollege &mdash; Forår 2026</footer>
 
 </body>
+
 </html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quiz — Metodik</title>
+  <link rel="stylesheet" href="quiz.css">
+</head>
+<body>
+  <div id="app"></div>
+
+  <script src="quiz-data.js"></script>
+  <script src="quiz-engine.js"></script>
+  <script>
+    window.QuizModule.renderSubjectQuiz({
+      mountId: 'app',
+      subjectKey: 'metodik',
+      subjectLabel: 'Metodik',
+      tag: 'Fag 2',
+      title: 'Quiz: Metodik',
+      description: 'Test din viden i metodik, agile arbejdsformer og underemner som Scrum, XP og user stories. Vælg sværhedsgrad for runden.',
+      backHref: 'metodik.html',
+      backText: 'Tilbage til emneoversigt',
+      homeHref: 'index.html',
+      homeLabel: '← Tilbage til forsiden',
+      defaultChoice: 'nem',
+      theme: {
+        '--q-accent': '#ff7c5c',
+        '--q-accent-ink': '#ffffff',
+        '--q-gradient-start': '#ff7c5c',
+        '--q-gradient-end': '#ff7c5c'
+      }
+    });
+  </script>
+</body>
+</html>

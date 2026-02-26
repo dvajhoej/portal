@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quiz — Softwaretest &amp; Sikkerhed</title>
+  <link rel="stylesheet" href="quiz.css">
+</head>
+<body>
+  <div id="app"></div>
+
+  <script src="quiz-data.js"></script>
+  <script src="quiz-engine.js"></script>
+  <script>
+    window.QuizModule.renderSubjectQuiz({
+      mountId: 'app',
+      subjectKey: 'softwaretest-sikkerhed',
+      subjectLabel: 'Softwaretest & Sikkerhed',
+      tag: 'Fag 3',
+      title: 'Quiz: Softwaretest & Sikkerhed',
+      description: 'Test din viden i softwaretest og sikkerhed på tværs af testniveauer, værktøjer og teststrategier. Vælg sværhedsgrad for runden.',
+      backHref: 'softwaretest-sikkerhed.html',
+      backText: 'Tilbage til emneoversigt',
+      homeHref: 'index.html',
+      homeLabel: '← Tilbage til forsiden',
+      defaultChoice: 'nem',
+      theme: {
+        '--q-accent': '#4ecf9b',
+        '--q-accent-ink': '#0f1117',
+        '--q-gradient-start': '#4ecf9b',
+        '--q-gradient-end': '#4ecf9b'
+      }
+    });
+  </script>
+</body>
+</html>

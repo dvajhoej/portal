@@ -1,22 +1,29 @@
 <!DOCTYPE html>
 <html lang="da">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Emner — Softwaretest &amp; Sikkerhed Forår 2026</title>
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
     :root {
-      --bg:        #0f1117;
-      --surface:   #1a1d27;
-      --border:    #2a2d3a;
-      --text:      #e2e4ed;
-      --muted:     #8b8fa8;
-      --c1:        #6c8cff;
-      --c2:        #ff7c5c;
-      --c3:        #4ecf9b;
-      --c4:        #f5a623;
+      --bg: #0f1117;
+      --surface: #1a1d27;
+      --border: #2a2d3a;
+      --text: #e2e4ed;
+      --muted: #8b8fa8;
+      --c1: #6c8cff;
+      --c2: #ff7c5c;
+      --c3: #4ecf9b;
+      --c4: #f5a623;
     }
 
     body {
@@ -34,6 +41,7 @@
       margin: 0 auto 3.5rem;
       text-align: center;
     }
+
     header .eyebrow {
       font-size: 0.75rem;
       font-weight: 600;
@@ -42,18 +50,21 @@
       color: var(--muted);
       margin-bottom: 0.6rem;
     }
+
     header h1 {
       font-size: clamp(1.8rem, 4vw, 2.8rem);
       font-weight: 700;
       letter-spacing: -0.02em;
       line-height: 1.15;
     }
+
     header h1 span {
       background: linear-gradient(90deg, var(--c2), var(--c4));
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
     }
+
     header p {
       margin-top: 1rem;
       color: var(--muted);
@@ -76,6 +87,7 @@
       padding-bottom: 0.75rem;
       border-bottom: 1px solid var(--border);
     }
+
     .module-number {
       width: 32px;
       height: 32px;
@@ -86,10 +98,26 @@
       font-weight: 700;
       flex-shrink: 0;
     }
-    .m1 .module-number { background: color-mix(in srgb, var(--c1) 18%, transparent); color: var(--c1); }
-    .m2 .module-number { background: color-mix(in srgb, var(--c2) 18%, transparent); color: var(--c2); }
-    .m3 .module-number { background: color-mix(in srgb, var(--c3) 18%, transparent); color: var(--c3); }
-    .m4 .module-number { background: color-mix(in srgb, var(--c4) 18%, transparent); color: var(--c4); }
+
+    .m1 .module-number {
+      background: color-mix(in srgb, var(--c1) 18%, transparent);
+      color: var(--c1);
+    }
+
+    .m2 .module-number {
+      background: color-mix(in srgb, var(--c2) 18%, transparent);
+      color: var(--c2);
+    }
+
+    .m3 .module-number {
+      background: color-mix(in srgb, var(--c3) 18%, transparent);
+      color: var(--c3);
+    }
+
+    .m4 .module-number {
+      background: color-mix(in srgb, var(--c4) 18%, transparent);
+      color: var(--c4);
+    }
 
     .module-title {
       font-size: 1.05rem;
@@ -116,27 +144,57 @@
       cursor: pointer;
       user-select: none;
     }
+
     .card:hover {
       transform: translateY(-2px);
     }
 
-    .m1 .card:hover, .m1 .card.open { border-color: var(--c1); }
-    .m2 .card:hover, .m2 .card.open { border-color: var(--c2); }
-    .m3 .card:hover, .m3 .card.open { border-color: var(--c3); }
-    .m4 .card:hover, .m4 .card.open { border-color: var(--c4); }
+    .m1 .card:hover,
+    .m1 .card.open {
+      border-color: var(--c1);
+    }
+
+    .m2 .card:hover,
+    .m2 .card.open {
+      border-color: var(--c2);
+    }
+
+    .m3 .card:hover,
+    .m3 .card.open {
+      border-color: var(--c3);
+    }
+
+    .m4 .card:hover,
+    .m4 .card.open {
+      border-color: var(--c4);
+    }
 
     /* left accent stripe */
     .card::before {
       content: '';
       position: absolute;
-      left: 0; top: 12px; bottom: 12px;
+      left: 0;
+      top: 12px;
+      bottom: 12px;
       width: 3px;
       border-radius: 0 3px 3px 0;
     }
-    .m1 .card::before { background: var(--c1); }
-    .m2 .card::before { background: var(--c2); }
-    .m3 .card::before { background: var(--c3); }
-    .m4 .card::before { background: var(--c4); }
+
+    .m1 .card::before {
+      background: var(--c1);
+    }
+
+    .m2 .card::before {
+      background: var(--c2);
+    }
+
+    .m3 .card::before {
+      background: var(--c3);
+    }
+
+    .m4 .card::before {
+      background: var(--c4);
+    }
 
     /* ── Card top row ── */
     .card-top {
@@ -160,13 +218,26 @@
       color: var(--muted);
       transition: transform .25s, color .2s;
     }
+
     .card.open .card-chevron {
       transform: rotate(180deg);
     }
-    .m1 .card.open .card-chevron { color: var(--c1); }
-    .m2 .card.open .card-chevron { color: var(--c2); }
-    .m3 .card.open .card-chevron { color: var(--c3); }
-    .m4 .card.open .card-chevron { color: var(--c4); }
+
+    .m1 .card.open .card-chevron {
+      color: var(--c1);
+    }
+
+    .m2 .card.open .card-chevron {
+      color: var(--c2);
+    }
+
+    .m3 .card.open .card-chevron {
+      color: var(--c3);
+    }
+
+    .m4 .card.open .card-chevron {
+      color: var(--c4);
+    }
 
     .card-desc {
       font-size: 0.85rem;
@@ -180,12 +251,15 @@
       grid-template-rows: 0fr;
       transition: grid-template-rows .28s ease;
     }
+
     .card.open .card-details {
       grid-template-rows: 1fr;
     }
+
     .card-details-inner {
       overflow: hidden;
     }
+
     .card-details-body {
       margin-top: 0.85rem;
       padding-top: 0.85rem;
@@ -194,9 +268,11 @@
       color: var(--muted);
       line-height: 1.65;
     }
-    .card-details-body p + p {
+
+    .card-details-body p+p {
       margin-top: 0.55rem;
     }
+
     .card-details-body strong {
       color: var(--text);
       font-weight: 600;
@@ -211,12 +287,27 @@
     }
   </style>
 </head>
+
 <body>
+
+  <a href="index.html"
+    style="align-self:flex-start;display:inline-flex;align-items:center;gap:.35rem;color:var(--muted);text-decoration:none;font-size:.82rem;margin-bottom:1.1rem;">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+      stroke-linecap="round" stroke-linejoin="round">
+      <polyline points="15 18 9 12 15 6" />
+    </svg>
+    Tilbage til forsiden
+  </a>
 
   <header>
     <p class="eyebrow">Techcollege · Forår 2026</p>
     <h1>Emner i faget<br><span>Softwaretest &amp; Sikkerhed</span></h1>
-    <p>Oversigt over de gennemgåede emner inden for softwaretest og sikkerhed. Klik på et emne for uddybende forklaring.</p>
+    <p>Kort overblik over fagets emner og underemner inden for softwaretest og sikkerhed. Klik på et emne for en kort
+      forklaring af testtypen eller værktøjet. Fagquizzen bruger 60 spørgsmål fordelt på Nem, Øvet og Avanceret.</p>
+    <a href="quiz-softwaretest-sikkerhed.html"
+      style="display:inline-flex;align-items:center;gap:.5rem;margin-top:1.25rem;padding:.6rem 1.2rem;background:color-mix(in srgb,var(--c3) 15%,transparent);border:1px solid color-mix(in srgb,var(--c3) 35%,transparent);border-radius:99px;color:var(--c3);font-size:.82rem;font-weight:600;text-decoration:none;transition:background .2s;">
+      Start fagquiz (Nem · Øvet · Avanceret) →
+    </a>
   </header>
 
   <!-- ══ Modul 1 ══ -->
@@ -230,40 +321,73 @@
       <div class="card" onclick="toggle(this)">
         <div class="card-top">
           <div class="card-title">Motivation for test</div>
-          <svg class="card-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          <svg class="card-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="6 9 12 15 18 9" />
+          </svg>
         </div>
-        <div class="card-desc">Hvorfor test er en central disciplin i professionel softwareudvikling — kvalitet, omkostninger og risiko.</div>
-        <div class="card-details"><div class="card-details-inner"><div class="card-details-body">
-          <p>Test handler grundlæggende om at <strong>reducere risikoen for fejl i produktion</strong>. Fejl fundet tidligt i udviklingsprocessen er markant billigere at rette end fejl der opdages af slutbrugere — en fejl i produktion koster typisk 10–100 gange mere at rette end en fejl fundet under test.</p>
-          <p>Systematisk test skaber <strong>tillid og forudsigelighed</strong>: en velafprøvet kodebase kan ændres og udvides med langt lavere risiko. Test er dermed ikke bare en kvalitetssikring — det er et udviklingsværktøj.</p>
-          <p>Test kan ikke bevise at et system er <strong>fejlfrit</strong> — det kan kun afsløre fejl. Formålet er at øge sandsynligheden for korrekt opførsel under kendte og ukendte betingelser.</p>
-        </div></div></div>
+        <div class="card-desc">Forklarer hvorfor test er nødvendigt, og hvordan risiko og konsekvens påvirker
+          testindsatsen.</div>
+        <div class="card-details">
+          <div class="card-details-inner">
+            <div class="card-details-body">
+              <p><strong>Motivationen for test</strong> handler om at undgå fejl, der kan give store konsekvenser for
+                brugere, drift og økonomi.</p>
+              <p><strong>Eksempler på fejl</strong> bruges til at vise, at selv små fejl kan få stor effekt afhængigt af
+                systemets anvendelse.</p>
+              <p>Testindsatsen bør derfor planlægges ud fra <strong>risiko, pris og konsekvens</strong> frem for at
+                teste alt lige meget.</p>
+            </div>
+          </div>
+        </div>
       </div>
 
       <div class="card" onclick="toggle(this)">
         <div class="card-top">
-          <div class="card-title">Testbegreber &amp; terminologi</div>
-          <svg class="card-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          <div class="card-title">Begreber, aktiviteter og testniveauer</div>
+          <svg class="card-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="6 9 12 15 18 9" />
+          </svg>
         </div>
-        <div class="card-desc">Grundlæggende begreber: testcase, testsuite, testdækning, forventet vs. faktisk resultat og fejlklassificering.</div>
-        <div class="card-details"><div class="card-details-inner"><div class="card-details-body">
-          <p>En <strong>testcase</strong> beskriver præcis, hvad der testes: forudsætning, input, den handling der udføres, og det forventede resultat. En samling relaterede testcases udgør en <strong>testsuite</strong>.</p>
-          <p><strong>Testdækning (code coverage)</strong> måler, hvor stor en andel af koden der faktisk udføres under testene. Høj dækning reducerer risikoen for uopdagede fejl — men høj dækning er ikke en garanti for korrekthed.</p>
-          <p>Fejlterminologi skelner mellem <strong>fejl (error/mistake)</strong> — en menneskelig handling der fører til et problem — <strong>defekt (fault/bug)</strong> — den konkrete fejl i koden — og <strong>svigt (failure)</strong> — det synlige forkerte resultat i kørende software.</p>
-        </div></div></div>
+        <div class="card-desc">Giver et overblik over centrale testbegreber, testaktiviteter og de vigtigste
+          testniveauer.</div>
+        <div class="card-details">
+          <div class="card-details-inner">
+            <div class="card-details-body">
+              <p>Emnet placerer <strong>test</strong> som en central aktivitet i udviklingsarbejdet, tæt koblet til
+                fejlretning og kvalitetssikring.</p>
+              <p>Det forklarer også, hvorfor <strong>total test</strong> i praksis er urealistisk, og hvorfor test i
+                stedet handler om at <strong>reducere risiko</strong>.</p>
+              <p>Der gives overblik over niveauer som <strong>unit, integration, system, acceptance</strong> og
+                <strong>regression</strong> test.</p>
+            </div>
+          </div>
+        </div>
       </div>
 
       <div class="card" onclick="toggle(this)">
         <div class="card-top">
-          <div class="card-title">Unit Testing &amp; Testing Tools</div>
-          <svg class="card-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          <div class="card-title">Unit test framework</div>
+          <svg class="card-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="6 9 12 15 18 9" />
+          </svg>
         </div>
-        <div class="card-desc">Automatiseret test af isolerede kodeenheder — frameworks, assertions og best practices for unit tests.</div>
-        <div class="card-details"><div class="card-details-inner"><div class="card-details-body">
-          <p><strong>Unit testing</strong> tester den mindste meningsfulde enhed af kode — typisk en enkelt funktion eller metode — i isolation fra resten af systemet. Målet er at verificere, at enheden opfører sig korrekt under alle relevante betingelser.</p>
-          <p>Populære <strong>unit testing frameworks</strong> er NUnit og xUnit (.NET), JUnit (Java), Jest (JavaScript) og pytest (Python). De tilbyder assertions, test fixtures og automatisk rapportering af resultater.</p>
-          <p>Gode unit tests er <strong>FIRST</strong>: Fast (hurtige at køre), Independent (uafhængige af hinanden), Repeatable (samme resultat hver gang), Self-validating (pass/fail uden manuel fortolkning) og Timely (skrevet tæt på koden de tester).</p>
-        </div></div></div>
+        <div class="card-desc">Forklarer hvordan et unit test-framework organiserer tests som kode med assertions og
+          test suites.</div>
+        <div class="card-details">
+          <div class="card-details-inner">
+            <div class="card-details-body">
+              <p>Unit tests skrives som <strong>eksekverbar kode</strong>, så de kan køres igen og igen under
+                udviklingen.</p>
+              <p>Et test-framework samler <strong>assertions</strong>, test cases og test suites, så tests bliver
+                strukturerede og automatiserbare.</p>
+              <p>Arbejdet med <strong>unit tests</strong> hænger naturligt sammen med senere brug af
+                <strong>coverage og CI</strong>.</p>
+            </div>
+          </div>
+        </div>
       </div>
 
     </div>
@@ -279,41 +403,72 @@
 
       <div class="card" onclick="toggle(this)">
         <div class="card-top">
-          <div class="card-title">GUI-test</div>
-          <svg class="card-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          <div class="card-title">System / GUI test</div>
+          <svg class="card-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="6 9 12 15 18 9" />
+          </svg>
         </div>
-        <div class="card-desc">Automatiseret test af brugergrænseflader — hvad der testes, udfordringerne og strategier for stabile GUI-tests.</div>
-        <div class="card-details"><div class="card-details-inner"><div class="card-details-body">
-          <p><strong>GUI-test</strong> (Graphical User Interface test) verificerer at brugergrænsefladen opfører sig korrekt: knapper reagerer, formularer validerer input korrekt, navigation fungerer og data vises som forventet.</p>
-          <p>GUI-tests er placeret øverst i <strong>testpyramiden</strong> — de er langsomme, skrøbelige og dyre at vedligeholde. En lille ændring i UI-strukturen kan bryde mange tests. Strategien er at have <em>færre</em> GUI-tests der dækker de vigtigste brugerscenarier, og lade unit- og integrationstests dække detaljerne.</p>
-          <p>Robuste GUI-tests bruger stabile <strong>selektorer</strong> — helst data-attributter frem for CSS-klasser — og venter aktivt på elementer frem for at bruge faste tidsforsinkelser. Page Object-mønsteret isolerer UI-strukturen fra testlogikken.</p>
-        </div></div></div>
+        <div class="card-desc">Beskriver system- og GUI-test som afprøvning af hele løsningen set udefra.</div>
+        <div class="card-details">
+          <div class="card-details-inner">
+            <div class="card-details-body">
+              <p><strong>System- og GUI-test</strong> kontrollerer, om hele løsningen fungerer korrekt, når den bruges
+                som et færdigt system.</p>
+              <p>Testen fokuserer ofte på <strong>black-box</strong>-adfærd, hvor man vurderer input og output uden at
+                kigge i koden.</p>
+              <p>Den bruges både <strong>manuelt og automatiseret</strong>, især til brugerflows, integrationer og
+                acceptlignende test.</p>
+            </div>
+          </div>
+        </div>
       </div>
 
       <div class="card" onclick="toggle(this)">
         <div class="card-top">
-          <div class="card-title">Systemtest</div>
-          <svg class="card-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          <div class="card-title">Capture/Playback og udfordringer</div>
+          <svg class="card-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="6 9 12 15 18 9" />
+          </svg>
         </div>
-        <div class="card-desc">Test af det samlede system end-to-end — funktionelle og ikke-funktionelle krav, testmiljø og testdata.</div>
-        <div class="card-details"><div class="card-details-inner"><div class="card-details-body">
-          <p><strong>Systemtest</strong> tester det fuldt integrerede system som en helhed i et miljø der ligner produktionsmiljøet. Formålet er at verificere, at systemet opfylder de specificerede krav — både funktionelle og ikke-funktionelle.</p>
-          <p>Systemtest dækker <strong>end-to-end scenarier</strong>: en bruger logger ind, udfører en opgave og systemet reagerer korrekt igennem alle lag — UI, forretningslogik, database og eksterne services.</p>
-          <p>Gode systemtests kræver <strong>realistiske testdata</strong> og et stabilt testmiljø. Testdata bør dække normale tilfælde, grænsetilfælde og fejlscenarier. Testmiljøet skal afspejle produktionsmiljøet tilstrækkeligt til at resultaterne er meningsfulde.</p>
-        </div></div></div>
+        <div class="card-desc">Forklarer hvad capture/playback-værktøjer gør, og hvorfor optagede GUI-tests kan være
+          skrøbelige.</div>
+        <div class="card-details">
+          <div class="card-details-inner">
+            <div class="card-details-body">
+              <p><strong>Capture/playback-værktøjer</strong> optager brugerhandlinger under test og forsøger senere at
+                afspille dem automatisk.</p>
+              <p>Metoden kan være <strong>hurtig at komme i gang med</strong>, men tests bliver ofte følsomme over for
+                ændringer i UI, timing og miljø.</p>
+              <p>Emnet forklarer derfor både <strong>værdien og begrænsningerne</strong> ved optagede GUI-tests.</p>
+            </div>
+          </div>
+        </div>
       </div>
 
       <div class="card" onclick="toggle(this)">
         <div class="card-top">
           <div class="card-title">Playwright</div>
-          <svg class="card-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          <svg class="card-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="6 9 12 15 18 9" />
+          </svg>
         </div>
-        <div class="card-desc">Microsofts open source framework til browserautomatisering og end-to-end test på tværs af Chromium, Firefox og WebKit.</div>
-        <div class="card-details"><div class="card-details-inner"><div class="card-details-body">
-          <p><strong>Playwright</strong> er et moderne open source framework fra Microsoft til automatisering af webbrowsere. Det understøtter Chromium, Firefox og WebKit — og tests kan køres på alle tre browsere med samme kode.</p>
-          <p>Playwright tilbyder <strong>auto-waiting</strong>: i stedet for at sætte faste forsinkelser venter frameworket automatisk på at elementer er synlige, klikbare og stabile. Det gør tests langt mere robuste end traditionelle Selenium-tests.</p>
-          <p>Playwright kan <strong>tage screenshots, optage video</strong> af testforløb og generere detaljerede fejlrapporter. Det understøtter både synkron og asynkron kode og har built-in support til API-test, netwwork interception og mobil-emulering.</p>
-        </div></div></div>
+        <div class="card-desc">Beskriver Playwright som værktøj til automatiseret browser- og GUI-test med optagelse og
+          fejlsøgning.</div>
+        <div class="card-details">
+          <div class="card-details-inner">
+            <div class="card-details-body">
+              <p><strong>Playwright</strong> bruges til at automatisere browserhandlinger og teste webgrænseflader på en
+                reproducerbar måde.</p>
+              <p>Værktøjet understøtter både håndskrevne tests og funktioner som <strong>codegen</strong>, der hjælper
+                med at oprette testskabeloner.</p>
+              <p>Funktioner som <strong>trace-visning</strong> og screenshots gør det lettere at fejlfinde, når en test
+                fejler.</p>
+            </div>
+          </div>
+        </div>
       </div>
 
     </div>
@@ -329,41 +484,73 @@
 
       <div class="card" onclick="toggle(this)">
         <div class="card-top">
-          <div class="card-title">Integrationstest</div>
-          <svg class="card-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          <div class="card-title">Andre testformer</div>
+          <svg class="card-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="6 9 12 15 18 9" />
+          </svg>
         </div>
-        <div class="card-desc">Test af samspillet mellem moduler og komponenter — og strategierne Big Bang, top-down, bottom-up og sandwich.</div>
-        <div class="card-details"><div class="card-details-inner"><div class="card-details-body">
-          <p><strong>Integrationstest</strong> tester, at separate moduler fungerer korrekt, når de kombineres. Mange fejl opstår ikke i enkeltmoduler, men i grænsefladen imellem dem — forkerte dataformater, timing-problemer eller uventede sideeffekter.</p>
-          <p>Strategier for integrationstest: <strong>Big Bang</strong> (integrer alt på én gang — simpelt men fejl er svære at lokalisere), <strong>Top-down</strong> (integrer fra højeste lag ned, brug stubs til ikke-færdige lag), <strong>Bottom-up</strong> (byg nedefra, brug drivere til at simulere øvre lag) og <strong>Sandwich</strong> (kombination af top-down og bottom-up).</p>
-          <p><strong>Mocks og stubs</strong> er centrale værktøjer: en stub returnerer foruddefinerede data og erstatter en afhængighed, mens en mock yderligere verificerer, at den afhængighed er kaldt korrekt. Brug af mocks gør integrationstests hurtigere og mere forudsigelige.</p>
-        </div></div></div>
+        <div class="card-desc">Giver et kort overblik over testtyper ud over funktionel test, fx performance, usability
+          og security.</div>
+        <div class="card-details">
+          <div class="card-details-inner">
+            <div class="card-details-body">
+              <p>Emnet viser, at <strong>kvalitet</strong> ikke kun handler om funktioner, men også om hastighed,
+                brugervenlighed og sikkerhed.</p>
+              <p><strong>Performance test</strong> vurderer systemets opførsel under belastning, mens <strong>usability
+                  test</strong> fokuserer på brugeroplevelsen.</p>
+              <p><strong>Security test</strong> supplerer de øvrige testformer ved at finde svagheder, der kan udnyttes
+                eller skabe risiko.</p>
+            </div>
+          </div>
+        </div>
       </div>
 
       <div class="card" onclick="toggle(this)">
         <div class="card-top">
-          <div class="card-title">Regressionstest</div>
-          <svg class="card-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          <div class="card-title">Integration og API-test</div>
+          <svg class="card-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="6 9 12 15 18 9" />
+          </svg>
         </div>
-        <div class="card-desc">Sikring af at nye ændringer ikke ødelægger eksisterende funktionalitet — automatisering og kontinuerlig integration.</div>
-        <div class="card-details"><div class="card-details-inner"><div class="card-details-body">
-          <p><strong>Regressionstest</strong> gennemkører en samling eksisterende tests efter en ændring i kodebasen for at sikre, at intet der tidligere virkede, er gået i stykker. Regressioner — fejl der genintroduceres — er en af de mest frustrerende og kostbare problemer i softwareudvikling.</p>
-          <p><strong>Automatisering</strong> er essentiel for regressionstest: en manual gennemgang af alle tests ved hver ændring er ikke skalerbar. Et automatiseret testsæt der køres ved hvert commit giver øjeblikkelig feedback og fanger regressioner, inden de når produktion.</p>
-          <p><strong>Kontinuerlig integration (CI)</strong> kombinerer automatiseret test med automatisk bygning: ved hvert push til version control køres hele testsætet automatisk. Et "grønt build" er bevis for at kodebasen er sund — et "rødt build" stopper integrationen og kræver øjeblikkelig opmærksomhed.</p>
-        </div></div></div>
+        <div class="card-desc">Forklarer hvordan integrationstest og API-test kontrollerer samspillet mellem systemets
+          dele.</div>
+        <div class="card-details">
+          <div class="card-details-inner">
+            <div class="card-details-body">
+              <p><strong>Integrationstest</strong> bruges til at kontrollere, at moduler, services og databaser arbejder
+                korrekt sammen.</p>
+              <p><strong>API-test</strong> fokuserer på endpoints, data og kontrakter mellem systemdele, ofte med
+                dedikerede testværktøjer.</p>
+              <p><strong>Test-frameworks og mocks</strong> kan bruges til at udvide testscope gradvist og teste større
+                sammenhænge på en kontrolleret måde.</p>
+            </div>
+          </div>
+        </div>
       </div>
 
       <div class="card" onclick="toggle(this)">
         <div class="card-top">
-          <div class="card-title">Performancetest &amp; belastningstest</div>
-          <svg class="card-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          <div class="card-title">Moq og Dependency Injection</div>
+          <svg class="card-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="6 9 12 15 18 9" />
+          </svg>
         </div>
-        <div class="card-desc">Test af systemets ydeevne under normal og ekstremsbelastning — svartider, gennemstrømning og flaskehalse.</div>
-        <div class="card-details"><div class="card-details-inner"><div class="card-details-body">
-          <p><strong>Performancetest</strong> måler systemets hastighed, stabilitet og ressourceforbrug under forventede driftsforhold. Nøglemetrikker er <em>svartid</em> (response time), <em>gennemstrømning</em> (requests per second) og <em>ressourceforbrug</em> (CPU, hukommelse).</p>
-          <p><strong>Belastningstest (load test)</strong> udsætter systemet for forventet og over-forventet brugerbelastning for at afdække flaskehalse og kapacitetsgrænser. <strong>Stresstest</strong> pusher systemet forbi dets grænser for at observere, hvordan det fejler — og om det kan genoprette sig.</p>
-          <p>Performanceproblemer er notorisk svære at rette efterfølgende. Det er langt billigere at designe for skalerbarhed fra starten og validere ydeevnen tidligt og løbende end at opdage kapacitetsproblemer i produktion under høj belastning.</p>
-        </div></div></div>
+        <div class="card-desc">Beskriver brugen af mocking og dependency injection til at isolere kode i tests.</div>
+        <div class="card-details">
+          <div class="card-details-inner">
+            <div class="card-details-body">
+              <p><strong>Dependency injection (DI)</strong> gør det muligt at udskifte afhængigheder, så kode bliver
+                lettere at teste.</p>
+              <p><strong>Moq</strong> og lignende mocking-værktøjer bruges til at oprette testdobler, der simulerer
+                samarbejdspartnere i unit tests.</p>
+              <p>Emnet viser, hvordan <strong>isolerede tests</strong> og <strong>integrationsværktøjer</strong> kan
+                kombineres i praktisk testarbejde.</p>
+            </div>
+          </div>
+        </div>
       </div>
 
     </div>
@@ -373,48 +560,59 @@
   <section class="module m4">
     <div class="module-header">
       <div class="module-number">04</div>
-      <span class="module-title">Sikkerhed &amp; Opsamling</span>
+      <span class="module-title">Coverage, CI &amp; Opsamling</span>
     </div>
     <div class="topics">
 
       <div class="card" onclick="toggle(this)">
         <div class="card-top">
-          <div class="card-title">Sikkerhedstest</div>
-          <svg class="card-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          <div class="card-title">Coverage og Continuous Integration</div>
+          <svg class="card-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="6 9 12 15 18 9" />
+          </svg>
         </div>
-        <div class="card-desc">Identifikation af sårbarheder i software — OWASP Top 10, penetrationstest og sikker kodning.</div>
-        <div class="card-details"><div class="card-details-inner"><div class="card-details-body">
-          <p><strong>Sikkerhedstest</strong> (security testing) afdækker sårbarheder i et system, inden angribere gør det. Det er en specialiseret disciplin der kræver viden om både angrebsteknikker og forsvarstiltag.</p>
-          <p><strong>OWASP Top 10</strong> er en anerkendt liste over de mest kritiske sikkerhedsrisici i webapplikationer, herunder: Injection (SQL, kommando), Broken Access Control, kryptografiske fejl, Cross-Site Scripting (XSS) og sikkerhedskonfigurationsfejl. Kendte angrebsmønstre kan systematisk testes og forebygges.</p>
-          <p><strong>Penetrationstest (pentest)</strong> er en autoriseret, kontrolleret angrebssimulation mod eget system for at afdække reelle sårbarheder. Resultaterne bruges til prioriteret udbedring. Sikker kodning og løbende dependency scanning er de første forsvarslinje.</p>
-        </div></div></div>
+        <div class="card-desc">Forklarer hvordan coverage og CI bruges til at måle testomfang og automatisere
+          testkørsel.</div>
+        <div class="card-details">
+          <div class="card-details-inner">
+            <div class="card-details-body">
+              <p><strong>Coverage</strong> viser, hvor stor en del af koden der bliver kørt af tests, og bruges som
+                indikator for testomfang.</p>
+              <p><strong>Continuous Integration (CI)</strong> automatiserer build og test, så fejl opdages tidligt ved
+                ændringer i koden.</p>
+              <p>Emnet forklarer, hvordan <strong>coverage og CI</strong> sammen understøtter en mere stabil og løbende
+                kvalitetssikring.</p>
+            </div>
+          </div>
+        </div>
       </div>
 
       <div class="card" onclick="toggle(this)">
         <div class="card-top">
-          <div class="card-title">Testpyramiden &amp; teststrategi</div>
-          <svg class="card-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          <div class="card-title">Test af fysiske systemer</div>
+          <svg class="card-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="6 9 12 15 18 9" />
+          </svg>
         </div>
-        <div class="card-desc">Balancering af testniveauer — unit, integration og end-to-end — og princippet om at teste på det rette lag.</div>
-        <div class="card-details"><div class="card-details-inner"><div class="card-details-body">
-          <p><strong>Testpyramiden</strong> illustrerer den anbefalede fordeling af tests: mange hurtige unit tests i bunden, et mellemlag af integrationstests og relativt få, langsomme end-to-end tests øverst. Jo højere i pyramiden, jo dyrere og langsommere er testen.</p>
-          <p>Princippet er at <strong>teste på det laveste mulige niveau</strong> der giver tilstrækkelig sikkerhed. En forretningsregel verificeres bedst med en unit test — ikke en GUI-test der kræver en hel browser, en server og en database for at køre.</p>
-          <p>Et <strong>anti-mønster</strong> er den omvendte pyramide (ice-cream cone): få unit tests og mange manuelle eller GUI-tests. Det resulterer i et langsomt, skrøbeligt og dyrt testsæt der sjældent køres og aldrig bliver grønt.</p>
-        </div></div></div>
+        <div class="card-desc">Beskriver særlige udfordringer ved test af software, der styrer eller afhænger af
+          hardware.</div>
+        <div class="card-details">
+          <div class="card-details-inner">
+            <div class="card-details-body">
+              <p>Når software er koblet til <strong>fysiske enheder</strong>, kan test være sværere at gennemføre uden
+                adgang til det rigtige udstyr og miljø.</p>
+              <p><strong>Simulatorer og emulatorer</strong> bruges til at efterligne hardware, så tests kan køres mere
+                sikkert og gentageligt.</p>
+              <p>Emnet giver et overblik over, hvordan <strong>testmiljøet</strong> påvirker <strong>teststrategien</strong>
+                i systemer med hardwareafhængigheder.</p>
+            </div>
+          </div>
+        </div>
       </div>
 
-      <div class="card" onclick="toggle(this)">
-        <div class="card-top">
-          <div class="card-title">Opsamling &amp; god testkultur</div>
-          <svg class="card-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
-        </div>
-        <div class="card-desc">Sammenfatning af fagets centrale pointer — og hvad der kendetegner teams der lykkes med systematisk test.</div>
-        <div class="card-details"><div class="card-details-inner"><div class="card-details-body">
-          <p>Succesfuld test kræver mere end teknik — det kræver en <strong>testkultur</strong>: et fælles ansvar for kvalitet, en forståelse for at tests er en investering og ikke en byrde, og en praksis hvor tests skrives sideløbende med koden og ikke bagefter.</p>
-          <p>Et sundt testsæt er <strong>hurtigt, pålideligt og vedligeholdbart</strong>. Tests der er langsomme, flakkende eller svære at forstå mister hurtigt teamets tillid og bliver deaktiveret. Ligesom produktionskode kræver testkode løbende vedligehold og refaktorering.</p>
-          <p>Test og sikkerhed er ikke modsætninger til hurtig levering — de er forudsætningen for det. Teams med god testdækning leverer <strong>hurtigere og med højere tillid</strong>, fordi de kan ændre kode og refaktorere uden frygt for at introducere fejl der ikke opdages.</p>
-        </div></div></div>
-      </div>
+
 
     </div>
   </section>
@@ -428,4 +626,5 @@
   </script>
 
 </body>
+
 </html>

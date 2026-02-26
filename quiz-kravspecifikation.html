@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quiz — Kravspecifikation</title>
+  <link rel="stylesheet" href="quiz.css">
+</head>
+<body>
+  <div id="app"></div>
+
+  <script src="quiz-data.js"></script>
+  <script src="quiz-engine.js"></script>
+  <script>
+    window.QuizModule.renderSubjectQuiz({
+      mountId: 'app',
+      subjectKey: 'kravspecifikation',
+      subjectLabel: 'Kravspecifikation',
+      tag: 'Fag 1',
+      title: 'Quiz: Kravspecifikation',
+      description: 'Test din viden i emnerne og underemnerne i kravspecifikation. Vælg sværhedsgrad og få 10 tilfældige spørgsmål pr. runde.',
+      backHref: 'kravspecifikation.html',
+      backText: 'Tilbage til emneoversigt',
+      homeHref: 'index.html',
+      homeLabel: '← Tilbage til forsiden',
+      defaultChoice: 'nem',
+      theme: {
+        '--q-accent': '#6c8cff',
+        '--q-accent-ink': '#ffffff',
+        '--q-gradient-start': '#6c8cff',
+        '--q-gradient-end': '#6c8cff'
+      }
+    });
+  </script>
+</body>
+</html>

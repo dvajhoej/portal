@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Samlet Quiz — Alle 3 fag</title>
+  <link rel="stylesheet" href="quiz.css">
+</head>
+<body>
+  <div id="app"></div>
+
+  <script src="quiz-data.js"></script>
+  <script src="quiz-engine.js"></script>
+  <script>
+    window.QuizModule.renderCombinedQuiz({
+      mountId: 'app',
+      tag: 'Samlet quiz',
+      titlePrefix: 'Quiz:',
+      titleHighlight: 'Alle 3 fag',
+      description: 'Blandet quiz på tværs af kravspecifikation, metodik og softwaretest & sikkerhed. Vælg Blandet eller en specifik sværhedsgrad.',
+      backHref: 'index.html',
+      backText: 'Tilbage til forsiden',
+      homeHref: 'index.html',
+      homeLabel: '← Tilbage til forsiden',
+      defaultChoice: 'blandet',
+      theme: {
+        '--q-accent': '#6c8cff',
+        '--q-accent-ink': '#ffffff',
+        '--q-gradient-start': '#6c8cff',
+        '--q-gradient-end': '#4ecf9b',
+        '--q-c1': '#6c8cff',
+        '--q-c2': '#ff7c5c',
+        '--q-c3': '#4ecf9b'
+      }
+    });
+  </script>
+</body>
+</html>

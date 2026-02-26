@@ -213,10 +213,22 @@
 </head>
 <body>
 
+  <a href="index.html"
+    style="align-self:flex-start;display:inline-flex;align-items:center;gap:.35rem;color:var(--muted);text-decoration:none;font-size:.82rem;margin-bottom:1.1rem;">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+      stroke-linecap="round" stroke-linejoin="round">
+      <polyline points="15 18 9 12 15 6" />
+    </svg>
+    Tilbage til forsiden
+  </a>
+
   <header>
     <p class="eyebrow">Techcollege · Forår 2026</p>
     <h1>Emner i faget<br><span>Metodik</span></h1>
-    <p>Oversigt over de gennemgåede emner i agile udviklingsmetoder. Klik på et emne for uddybende forklaring.</p>
+    <p>Kort overblik over fagets emner og underemner inden for metodik. Klik på et emne for en kort forklaring af begrebet og dets rolle i agile processer. Fagquizzen bruger 60 spørgsmål fordelt på Nem, Øvet og Avanceret.</p>
+    <a href="quiz-metodik.html" style="display:inline-flex;align-items:center;gap:.5rem;margin-top:1.25rem;padding:.6rem 1.2rem;background:color-mix(in srgb,var(--c2) 15%,transparent);border:1px solid color-mix(in srgb,var(--c2) 35%,transparent);border-radius:99px;color:var(--c2);font-size:.82rem;font-weight:600;text-decoration:none;transition:background .2s;">
+      Start fagquiz (Nem · Øvet · Avanceret) →
+    </a>
   </header>
 
   <!-- ══ Modul 1 ══ -->
@@ -232,37 +244,37 @@
           <div class="card-title">Agilt manifest &amp; principper</div>
           <svg class="card-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
         </div>
-        <div class="card-desc">De grundlæggende værdier og 12 principper bag agil softwareudvikling — og hvad de betyder i praksis.</div>
+        <div class="card-desc">Forklarer de værdier og principper, som danner grundlaget for agile arbejdsformer.</div>
         <div class="card-details"><div class="card-details-inner"><div class="card-details-body">
-          <p><strong>Det agile manifest</strong> fra 2001 opstiller fire kerneprioriteter: individer og interaktion over processer og værktøjer, fungerende software over omfattende dokumentation, kundesamarbejde over kontraktforhandling, og reaktion på forandring over at følge en plan.</p>
-          <p>De <strong>12 agile principper</strong> uddyber manifestet. Centrale principper er: tidlig og løbende levering af værdifuld software, velkomst til skiftende krav, tæt dagligt samarbejde, motiverede enkeltpersoner og bæredygtigt tempo.</p>
-          <p>Manifestet er et <strong>holdningsdokument</strong> — det erstatter ikke planlægning og dokumentation, men sætter dem i perspektiv i forhold til det egentlige mål: at levere software der skaber værdi.</p>
+          <p>Det agile manifest beskriver <strong>fire værdier</strong>, som prioriterer samarbejde, fleksibilitet og fungerende software.</p>
+          <p>De <strong>12 principper</strong> uddyber, hvordan værdierne omsættes til praksis gennem levering, feedback og løbende forbedring.</p>
+          <p>Emnet giver dermed det <strong>fælles sprog</strong>, som de øvrige agile metoder bygger videre på.</p>
         </div></div></div>
       </div>
 
       <div class="card" onclick="toggle(this)">
         <div class="card-top">
-          <div class="card-title">Agile metoder &amp; rammer</div>
+          <div class="card-title">Metodeoverblik</div>
           <svg class="card-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
         </div>
-        <div class="card-desc">Overblik over de mest udbredte agile metoder og redskaber, og hvornår man anvender dem.</div>
+        <div class="card-desc">Giver et overblik over klassiske og agile udviklingsmetoder og deres forskellige arbejdsformer.</div>
         <div class="card-details"><div class="card-details-inner"><div class="card-details-body">
-          <p>Agile rammer er konkrete implementeringer af de agile principper. De mest udbredte er <strong>Scrum</strong> (iterativ projektledelse), <strong>Kanban</strong> (flow-baseret arbejdsstyring) og <strong>Extreme Programming (XP)</strong> (fokus på kodekvalitet og tekniske praksisser).</p>
-          <p>Fælles for alle agile metoder er <strong>kortere cyklusser</strong>, hyppig feedback og løbende tilpasning. Valget af metode afhænger af teamstørrelse, kravstabilitet og organisationens modenhed.</p>
-          <p>Typiske agile <strong>redskaber</strong> inkluderer taskboards, burndown charts, daily standups, retrospektiver og User Stories — alle designet til at synliggøre fremdrift og fjerne forhindringer.</p>
+          <p>Metodeoverblikket viser forskellen mellem <strong>traditionelle modeller</strong> og <strong>agile metoder</strong>.</p>
+          <p>Formålet er at forstå, hvordan <strong>metoder varierer</strong> i planlægning, dokumentation, samarbejde og håndtering af ændringer.</p>
+          <p><strong>Vandfaldsmodellen</strong> bruges ofte som referencepunkt, når agile arbejdsformer sammenlignes med faseopdelte projekter.</p>
         </div></div></div>
       </div>
 
       <div class="card" onclick="toggle(this)">
         <div class="card-top">
-          <div class="card-title">Introduktion til faget</div>
+          <div class="card-title">Mål og evaluering</div>
           <svg class="card-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
         </div>
-        <div class="card-desc">Fagets læringsmål, opbygning og den skriftlige opgave om agil udviklingsmetode.</div>
+        <div class="card-desc">Forklarer hvordan læringsmål og evaluering bruges til at afgrænse forventninger og fagligt fokus.</div>
         <div class="card-details"><div class="card-details-inner"><div class="card-details-body">
-          <p>Faget Metodik giver et <strong>systematisk overblik over agile tilgange</strong> til softwareudvikling. Målepindene dækker: det agile manifest og principper, Scrum, Extreme Programming og Test Driven Development.</p>
-          <p>Den <strong>skriftlige opgave</strong> er en maks. fem siders beskrivelse af en agil udviklingsmetode, afleveret i PDF. Opgaven demonstrerer evnen til at forklare og anvende de gennemgåede begreber og metoder.</p>
-          <p>Undervisningen er praktisk orienteret — begreber introduceres og sættes derefter ind i konkrete <strong>udviklingsscenarier</strong>, så sammenhængen mellem teori og daglig arbejdspraksis bliver tydelig.</p>
+          <p><strong>Læringsmål</strong> beskriver, hvilke agile begreber og metoder der forventes forstået og anvendt.</p>
+          <p><strong>Evaluering</strong> kobler målene til en opgave eller vurdering, så det bliver tydeligt, hvad der skal demonstreres.</p>
+          <p>Emnet fungerer som <strong>ramme for forventninger, fokus og dokumentation</strong> af det faglige arbejde.</p>
         </div></div></div>
       </div>
 
@@ -282,11 +294,11 @@
           <div class="card-title">Scrum-roller</div>
           <svg class="card-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
         </div>
-        <div class="card-desc">De tre definerede roller i Scrum: Product Owner, Scrum Master og Scrum Team — og ansvarsfordelingen mellem dem.</div>
+        <div class="card-desc">Forklarer ansvar og samarbejde mellem de tre roller i Scrum.</div>
         <div class="card-details"><div class="card-details-inner"><div class="card-details-body">
-          <p><strong>Product Owner</strong> repræsenterer kunden og forretningen. PO ejer Product Backlog, prioriterer opgaver og sikrer at teamet arbejder med det, der skaber mest forretningsværdi.</p>
-          <p><strong>Scrum Master</strong> er facilitator og coach — ikke leder. SM fjerner forhindringer, sikrer at Scrum-processen følges, og hjælper teamet med løbende at forbedre sig. SM beskytter teamet fra forstyrrelser udefra.</p>
-          <p><strong>Scrum Team</strong> er et selvorganiserende, tværfagligt team der planlægger og udfører arbejdet. Teamet bestemmer selv, hvordan opgaverne løses, og er kollektivt ansvarlig for leverancen.</p>
+          <p>Scrum arbejder med tre roller: <strong>Product Owner, Scrum Master og udviklingsteamet</strong>.</p>
+          <p><strong>Rollerne</strong> fordeler ansvar for prioritering, proces og levering, så teamet kan arbejde fokuseret i sprint.</p>
+          <p><strong>Forståelsen af rollerne</strong> er central, fordi samarbejdet mellem dem styrer både tempo og retning i Scrum.</p>
         </div></div></div>
       </div>
 
@@ -295,24 +307,24 @@
           <div class="card-title">Scrum-ceremonier</div>
           <svg class="card-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
         </div>
-        <div class="card-desc">De tre faste mødetyper i Scrum: Sprint Planning, Daily Scrum og Sprint Review — formål, deltagere og varighed.</div>
+        <div class="card-desc">Giver et overblik over de faste møder i Scrum og deres formål i et sprint.</div>
         <div class="card-details"><div class="card-details-inner"><div class="card-details-body">
-          <p><strong>Sprint Planning Workshop</strong> afholdes i starten af hvert sprint. Teamet vælger opgaver fra Product Backlog og nedbryder dem til konkrete aktiviteter. Resultatet er en Sprint Backlog og et sprint-mål.</p>
-          <p><strong>Daily Scrum</strong> er et dagligt 15-minutters standup. Hvert teammedlem besvarer: hvad lavede jeg i går, hvad laver jeg i dag, og er der noget der blokerer mig? Det handler om koordination — ikke statusrapportering.</p>
-          <p><strong>Sprint Review Meeting</strong> afholdes ved sprintets afslutning. Teamet demonstrerer det færdige arbejde for Product Owner og interessenter, modtager feedback og justerer backloggen herefter.</p>
+          <p><strong>Scrum-ceremonier</strong> er de faste møder, der strukturerer arbejdet i et sprint, fx planlægning, daily, review og retrospektiv.</p>
+          <p>Hvert møde har et <strong>tydeligt formål</strong>: planlægge arbejde, koordinere dagligt, vise resultat og forbedre processen.</p>
+          <p>Emnet hjælper med at forstå, hvordan <strong>rytmen i Scrum</strong> skaber løbende opfølgning og læring.</p>
         </div></div></div>
       </div>
 
       <div class="card" onclick="toggle(this)">
         <div class="card-top">
-          <div class="card-title">Scrum-værktøjer</div>
+          <div class="card-title">Scrum-værktøjer / artefakter</div>
           <svg class="card-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
         </div>
-        <div class="card-desc">Product Backlog, Sprint Backlog og Burndown Chart — de tre centrale styringsværktøjer i Scrum.</div>
+        <div class="card-desc">Beskriver de centrale artefakter i Scrum og hvordan de bruges til planlægning og opfølgning.</div>
         <div class="card-details"><div class="card-details-inner"><div class="card-details-body">
-          <p><strong>Product Backlog</strong> er en prioriteret liste over alt det, der ønskes i produktet — User Stories, fejlrettelser og forbedringer. Den vedligeholdes af Product Owner og opdateres løbende.</p>
-          <p><strong>Sprint Backlog</strong> er den delmængde af Product Backlog som teamet har forpligtet sig til at levere i det igangværende sprint. Den er teamets plan og må ikke ændres af andre end teamet selv.</p>
-          <p><strong>Burndown Chart</strong> viser den resterende mængde arbejde over tid i et sprint. En faldende kurve mod nul er målet. Afvigelser fra den ideelle linje signalerer tidligt, om sprintet er på sporet.</p>
+          <p><strong>Scrum-artefakter</strong> bruges til at gøre arbejde og fremdrift synlig for hele teamet.</p>
+          <p><strong>Product Backlog</strong> samler det prioriterede arbejde, <strong>Sprint Backlog</strong> viser sprintets aktuelle opgaver, og et <strong>Burn Down Chart</strong> viser fremdrift over tid.</p>
+          <p><strong>Artefakterne</strong> gør det lettere at planlægge, følge op og tilpasse arbejdet undervejs.</p>
         </div></div></div>
       </div>
 
@@ -332,24 +344,24 @@
           <div class="card-title">Extreme Programming (XP)</div>
           <svg class="card-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
         </div>
-        <div class="card-desc">En agil metode med fokus på kodekvalitet, hyppige releases og tæt samarbejde — herunder Pair Programming og de fire grundaktiviteter.</div>
+        <div class="card-desc">Forklarer XP som en agil metode med fokus på teknisk kvalitet og hurtig feedback.</div>
         <div class="card-details"><div class="card-details-inner"><div class="card-details-body">
-          <p><strong>Extreme Programming (XP)</strong> er en agil metode der "skruer op" for god praksis til ekstremer. XPs fire grundaktiviteter er: <em>Coding</em> (konstant, feedback-drevet), <em>Testing</em> (altid automatiseret), <em>Listening</em> (tæt dialog med kunden) og <em>Designing</em> (simpelt, refaktoreret løbende).</p>
-          <p><strong>Pair Programming</strong> er to udviklere ved én computer: én skriver kode (driver), én reviewer og tænker fremad (navigator). Rollerne skiftes jævnligt. Det reducerer fejl, spreder viden og øger kodekvaliteten.</p>
-          <p>XP lægger desuden vægt på <strong>kontinuerlig integration, simpelt design, kodestandarder og hyppige small releases</strong> — alt sammen med det mål at holde kodebasen sund og leverancerne forudsigelige.</p>
+          <p><strong>Extreme Programming (XP)</strong> er en agil metode, der lægger vægt på hyppig feedback, simple løsninger og høj kodekvalitet.</p>
+          <p>Metoden beskrives gennem aktiviteter, værdier, principper og konkrete <strong>practices</strong>.</p>
+          <p>Eksempler på practices er <strong>pair programming, TDD, continuous integration, refactoring</strong> og små leverancer.</p>
         </div></div></div>
       </div>
 
       <div class="card" onclick="toggle(this)">
         <div class="card-top">
-          <div class="card-title">Test Driven Development (TDD)</div>
+          <div class="card-title">Pair Programming &amp; TTD</div>
           <svg class="card-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
         </div>
-        <div class="card-desc">Udviklingsmetode hvor tests skrives før koden — Red-Green-Refactor-cyklussen og dens effekt på design og kvalitet.</div>
+        <div class="card-desc">Beskriver parprogrammering og TDD som konkrete arbejdsmetoder i XP.</div>
         <div class="card-details"><div class="card-details-inner"><div class="card-details-body">
-          <p><strong>Test Driven Development (TDD)</strong> vender den traditionelle rækkefølge på hovedet: skriv en test der fejler (<em>Red</em>), skriv netop nok kode til at testen passerer (<em>Green</em>), og ryd derefter koden op uden at bryde testen (<em>Refactor</em>).</p>
-          <p>TDD er ikke primært en teststrategi — det er en <strong>designmetode</strong>. At skrive testen først tvinger udvikleren til at tænke over grænseflader og adfærd, inden implementeringen begynder. Resultatet er typisk mere modulært og testvenligt design.</p>
-          <p>En komplet testpakke fra TDD giver desuden et <strong>sikkerhedsnet</strong>: fremtidige ændringer og refaktoreringer kan foretages trygt, fordi fejl fanges automatisk og øjeblikkeligt.</p>
+          <p><strong>Parprogrammering</strong> betyder, at to udviklere arbejder sammen ved samme opgave og deler ansvar for kvaliteten.</p>
+          <p><strong>TDD</strong> beskriver en arbejdscyklus, hvor man skriver test først, får den til at bestå og derefter forbedrer koden gennem refaktorering.</p>
+          <p><strong>Begge teknikker</strong> støtter XP ved at skabe hurtig feedback, fælles forståelse og mere robust kode.</p>
         </div></div></div>
       </div>
 
@@ -369,11 +381,11 @@
           <div class="card-title">User Stories</div>
           <svg class="card-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
         </div>
-        <div class="card-desc">Korte, brugercentrerede kravbeskrivelser der danner grundlaget for Product Backlog og sprint-planlægning.</div>
+        <div class="card-desc">Forklarer hvordan user stories beskriver funktioner fra brugerens perspektiv og bruges i backloggen.</div>
         <div class="card-details"><div class="card-details-inner"><div class="card-details-body">
-          <p>En User Story er en kort beskrivelse af en funktion fra brugerens perspektiv: <strong>"Som [rolle] ønsker jeg [hvad] for at [hvorfor]."</strong> Formatet sikrer, at kravene er forankret i et reelt brugerbehov og ikke blot tekniske ønskelister.</p>
-          <p>Gode User Stories følger <strong>INVEST-kriterierne</strong>: Independent (uafhængige), Negotiable (forhandlingsbare), Valuable (værdifulde), Estimable (estimerbare), Small (håndterbare) og Testable (testbare).</p>
-          <p>Hver User Story suppleres med <strong>acceptkriterier</strong>, der præciserer hvornår historien er "done". Dette skaber fælles forventning mellem Product Owner og teamet og reducerer misforståelser.</p>
+          <p>En <strong>user story</strong> beskriver et behov eller en funktion set fra brugerens synspunkt.</p>
+          <p><strong>Stories</strong> skrives ofte i et <strong>fast format</strong>, så rolle, handling og værdi bliver tydelige.</p>
+          <p>De kan suppleres med acceptkriterier, <strong>definition of done</strong> og eksempler, så teamet deler samme forståelse.</p>
         </div></div></div>
       </div>
 
@@ -382,24 +394,24 @@
           <div class="card-title">Planning Poker</div>
           <svg class="card-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
         </div>
-        <div class="card-desc">Konsensusbaseret estimeringsteknik hvor hele teamet deltager — og hvorfor divergerende estimater er en styrke.</div>
+        <div class="card-desc">Beskriver sammenhængen mellem user stories og Planning Poker til fælles estimering.</div>
         <div class="card-details"><div class="card-details-inner"><div class="card-details-body">
-          <p><strong>Planning Poker</strong> er en agil estimeringsteknik. Hvert teammedlem har et sæt kort med tal fra Fibonacci-sekvensen (1, 2, 3, 5, 8, 13…). For hvert emne vælger alle et kort — og viser det samtidigt, så ingen påvirkes af andres valg.</p>
-          <p>Hvis estimaterne afviger meget, diskuterer teamet begrundelserne: dem med lavest og højest estimat forklarer deres tankegang. Processen afdækker <strong>skjulte antagelser og risici</strong>, der ellers ville forblive usynlige.</p>
-          <p>Planning Poker estimerer <strong>relativ kompleksitet</strong> (Story Points), ikke timer. Et element med 8 point er dobbelt så komplekst som et med 4 — det er teamets kollektive forståelse af opgaven, der kvantificeres, ikke den reelle tidsforbrug.</p>
+          <p><strong>Planning Poker</strong> bruges til at estimere user stories i fællesskab ved at sammenligne opgavernes størrelse eller kompleksitet.</p>
+          <p>Metoden understøtter <strong>fælles vurdering</strong> af forståelse, usikkerhed og prioritering før udviklingen starter.</p>
+          <p>Emnet kobler derfor <strong>stories og planlægning</strong> sammen i en praktisk estimeringsproces.</p>
         </div></div></div>
       </div>
 
       <div class="card" onclick="toggle(this)">
         <div class="card-top">
-          <div class="card-title">Agilt scenarie i praksis</div>
+          <div class="card-title">Agilt scenarie (Scrum + XP)</div>
           <svg class="card-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
         </div>
-        <div class="card-desc">Sammensætning af Scrum og XP i et konkret udviklingsscenarie — fra Product Backlog til leveret sprint.</div>
+        <div class="card-desc">Forklarer hvordan Scrum og XP kan kombineres i et konkret udviklingsscenarie.</div>
         <div class="card-details"><div class="card-details-inner"><div class="card-details-body">
-          <p>Et komplet agilt scenarie kombinerer metodernes styrker: <strong>Scrum</strong> styrer processen og planlægningen (roller, ceremonier, backlog), mens <strong>XP</strong> sikrer kodekvaliteten (TDD, pair programming, kontinuerlig integration).</p>
-          <p>Forløbet starter med at <strong>Product Owner</strong> prioriterer Product Backlog baseret på forretningsværdi. Under Sprint Planning estimerer teamet med Planning Poker og vælger User Stories til sprintet. Under sprintet anvendes TDD og Pair Programming til implementeringen.</p>
-          <p>Sprintet afsluttes med <strong>Sprint Review</strong> (demo for interessenter) og <strong>Retrospektiv</strong> (teamets selvevaluering). Processen gentages — hvert sprint leverer noget brugbart og skaber grundlag for forbedring.</p>
+          <p>Et <strong>agilt scenarie</strong> viser, hvordan en konkret udviklingsopgave kan planlægges og gennemføres med agile metoder.</p>
+          <p>Her kombineres typisk <strong>Scrum</strong> (roller, møder og artefakter) med <strong>XP</strong> (teknikker og praksis).</p>
+          <p>Formålet er at demonstrere, at metoderne kan bruges sammen på en <strong>meningsfuld måde i praksis</strong>.</p>
         </div></div></div>
       </div>
 
@@ -416,3 +428,6 @@
 
 </body>
 </html>
+
+
+
