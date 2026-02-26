@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Emner — Kravspecifikation Forår 2026</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:        #0f1117;
+      --surface:   #1a1d27;
+      --border:    #2a2d3a;
+      --text:      #e2e4ed;
+      --muted:     #8b8fa8;
+      --c1:        #6c8cff;
+      --c2:        #ff7c5c;
+      --c3:        #4ecf9b;
+      --c4:        #f5a623;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Segoe UI', system-ui, sans-serif;
+      font-size: 15px;
+      line-height: 1.65;
+      padding: 3rem 1.5rem 6rem;
+    }
+
+    /* ── Header ── */
+    header {
+      max-width: 860px;
+      margin: 0 auto 3.5rem;
+      text-align: center;
+    }
+    header .eyebrow {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 0.6rem;
+    }
+    header h1 {
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      line-height: 1.15;
+    }
+    header h1 span {
+      background: linear-gradient(90deg, var(--c1), var(--c3));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    header p {
+      margin-top: 1rem;
+      color: var(--muted);
+      max-width: 480px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* ── Module sections ── */
+    .module {
+      max-width: 860px;
+      margin: 0 auto 3rem;
+    }
+
+    .module-header {
+      display: flex;
+      align-items: center;
+      gap: 0.9rem;
+      margin-bottom: 1rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .module-number {
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      display: grid;
+      place-items: center;
+      font-size: 0.75rem;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+    .m1 .module-number { background: color-mix(in srgb, var(--c1) 18%, transparent); color: var(--c1); }
+    .m2 .module-number { background: color-mix(in srgb, var(--c2) 18%, transparent); color: var(--c2); }
+    .m3 .module-number { background: color-mix(in srgb, var(--c3) 18%, transparent); color: var(--c3); }
+    .m4 .module-number { background: color-mix(in srgb, var(--c4) 18%, transparent); color: var(--c4); }
+
+    .module-title {
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    /* ── Topic grid ── */
+    .topics {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 0.9rem;
+    }
+
+    /* ── Card ── */
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.2rem 1.3rem;
+      position: relative;
+      overflow: hidden;
+      transition: border-color .2s, transform .2s;
+      cursor: pointer;
+      user-select: none;
+    }
+    .card:hover {
+      transform: translateY(-2px);
+    }
+
+    .m1 .card:hover, .m1 .card.open { border-color: var(--c1); }
+    .m2 .card:hover, .m2 .card.open { border-color: var(--c2); }
+    .m3 .card:hover, .m3 .card.open { border-color: var(--c3); }
+    .m4 .card:hover, .m4 .card.open { border-color: var(--c4); }
+
+    /* left accent stripe */
+    .card::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 12px; bottom: 12px;
+      width: 3px;
+      border-radius: 0 3px 3px 0;
+    }
+    .m1 .card::before { background: var(--c1); }
+    .m2 .card::before { background: var(--c2); }
+    .m3 .card::before { background: var(--c3); }
+    .m4 .card::before { background: var(--c4); }
+
+    /* ── Card top row ── */
+    .card-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 0.5rem;
+    }
+
+    .card-title {
+      font-weight: 600;
+      font-size: 0.95rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .card-chevron {
+      flex-shrink: 0;
+      width: 18px;
+      height: 18px;
+      margin-top: 1px;
+      color: var(--muted);
+      transition: transform .25s, color .2s;
+    }
+    .card.open .card-chevron {
+      transform: rotate(180deg);
+    }
+    .m1 .card.open .card-chevron { color: var(--c1); }
+    .m2 .card.open .card-chevron { color: var(--c2); }
+    .m3 .card.open .card-chevron { color: var(--c3); }
+    .m4 .card.open .card-chevron { color: var(--c4); }
+
+    .card-desc {
+      font-size: 0.85rem;
+      color: var(--muted);
+      line-height: 1.55;
+    }
+
+    /* ── Expandable details ── */
+    .card-details {
+      display: grid;
+      grid-template-rows: 0fr;
+      transition: grid-template-rows .28s ease;
+    }
+    .card.open .card-details {
+      grid-template-rows: 1fr;
+    }
+    .card-details-inner {
+      overflow: hidden;
+    }
+    .card-details-body {
+      margin-top: 0.85rem;
+      padding-top: 0.85rem;
+      border-top: 1px solid var(--border);
+      font-size: 0.85rem;
+      color: var(--muted);
+      line-height: 1.65;
+    }
+    .card-details-body p + p {
+      margin-top: 0.55rem;
+    }
+    .card-details-body strong {
+      color: var(--text);
+      font-weight: 600;
+    }
+
+    /* ── Footer ── */
+    footer {
+      text-align: center;
+      margin-top: 4rem;
+      color: var(--muted);
+      font-size: 0.78rem;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <p class="eyebrow">Techcollege · Forår 2026</p>
+    <h1>Emner i faget<br><span>Kravspecifikation</span></h1>
+    <p>Oversigt over de gennemgåede emner fordelt på fagets fire moduler. Klik på et emne for uddybende forklaring.</p>
+  </header>
+
+  <!-- ══ Modul 1 ══ -->
+  <section class="module m1">
+    <div class="module-header">
+      <div class="module-number">01</div>
+      <span class="module-title">Modeller &amp; Metoder</span>
+    </div>
+    <div class="topics">
+
+      <div class="card" onclick="toggle(this)">
+        <div class="card-top">
+          <div class="card-title">Systemudviklingsmodeller</div>
+          <svg class="card-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+        <div class="card-desc">Gennemgang af klassiske og moderne modeller som vandfaldsmodellen, iterative modeller og agile tilgange — og hvornår man vælger hvad.</div>
+        <div class="card-details"><div class="card-details-inner"><div class="card-details-body">
+          <p><strong>Vandfaldsmodellen</strong> er lineær og faseopdelt: analyse → design → implementering → test → vedligehold. Hver fase afsluttes fuldt ud, inden næste begynder. Velegnet når kravene er kendte og stabile fra start.</p>
+          <p><strong>Iterative modeller</strong> gentager faserne i korte cyklusser (iterationer), så systemet vokser gradvist. Man kan justere kursen undervejs baseret på løbende feedback.</p>
+          <p><strong>Agile metoder</strong> (Scrum, Kanban) prioriterer hurtige leverancer, tæt kundekontakt og evnen til at ændre krav under projektet. Velegnet til projekter med høj usikkerhed eller skiftende behov.</p>
+        </div></div></div>
+      </div>
+
+      <div class="card" onclick="toggle(this)">
+        <div class="card-top">
+          <div class="card-title">Analyse og designmetoder</div>
+          <svg class="card-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+        <div class="card-desc">Strukturerede metoder til at afdække behov, kortlægge interessenter og omdanne dem til konkrete systemkrav.</div>
+        <div class="card-details"><div class="card-details-inner"><div class="card-details-body">
+          <p>Kravindsamling sker via <strong>interviews, observationer, spørgeskemaer og workshops</strong> med relevante interessenter. Formålet er at forstå det egentlige behov bag det ønskede system.</p>
+          <p><strong>Interessentanalysen</strong> kortlægger alle berørte parter — brugere, beslutningstagere, driftsansvarlige — og vurderer deres indflydelse og interesse i projektet.</p>
+          <p>Resultaterne omdannes til et klart defineret <strong>scope</strong> (systemgrænse) og danner grundlaget for kravspecifikationen.</p>
+        </div></div></div>
+      </div>
+
+      <div class="card" onclick="toggle(this)">
+        <div class="card-top">
+          <div class="card-title">Case-beskrivelse</div>
+          <svg class="card-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+        <div class="card-desc">Formulering af en afgrænset case som grundlag for det videre arbejde med kravspecifikation og prototype.</div>
+        <div class="card-details"><div class="card-details-inner"><div class="card-details-body">
+          <p>En god casebeskrivelse definerer <strong>baggrund, problemstilling, mål og afgrænsning</strong>. Den svarer på: hvad er problemet, hvem ejer det, og hvad skal et nyt system bidrage med?</p>
+          <p>Casen fungerer som <strong>fælles referencepunkt</strong> for gruppen igennem hele forløbet og sikrer, at kravspecifikation, prototype og accepttest alle peger på det samme mål.</p>
+          <p>Eksempel fra faget: <strong>WCTV</strong> — et system til at overvåge og forbedre toiletforholdene på Techcollege via automatiske tilstandssnapshots og behovsbaseret rengøring.</p>
+        </div></div></div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ══ Modul 2 ══ -->
+  <section class="module m2">
+    <div class="module-header">
+      <div class="module-number">02</div>
+      <span class="module-title">Prototyping</span>
+    </div>
+    <div class="topics">
+
+      <div class="card" onclick="toggle(this)">
+        <div class="card-top">
+          <div class="card-title">Lo-fi prototyper</div>
+          <svg class="card-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+        <div class="card-desc">Hurtige skitser og papirprototyper der giver tidlig feedback på idéer uden teknisk investering.</div>
+        <div class="card-details"><div class="card-details-inner"><div class="card-details-body">
+          <p><strong>Lo-fi (low-fidelity)</strong> prototyper er bevidst ru og ufærdige — tegnet på papir, post-its eller en whiteboard. Det lave detaljeniveau er en styrke: brugerne kommenterer på konceptet, ikke på farver og fonte.</p>
+          <p>De bruges tidligt i processen til hurtigt at <strong>teste layout, flow og koncepter</strong>, inden man investerer tid i digital udvikling. En lo-fi prototype kan laves på minutter og kasseres uden tab.</p>
+          <p>Typiske former: <strong>papirskitser, wireframes på papir, post-it storyboards</strong>.</p>
+        </div></div></div>
+      </div>
+
+      <div class="card" onclick="toggle(this)">
+        <div class="card-top">
+          <div class="card-title">Hi-fi prototyper</div>
+          <svg class="card-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+        <div class="card-desc">Digitale, klikkbare mockups der simulerer det færdige system og bruges til brugertests og præsentationer.</div>
+        <div class="card-details"><div class="card-details-inner"><div class="card-details-body">
+          <p><strong>Hi-fi (high-fidelity)</strong> prototyper er tæt på det færdige produkt i udseende og adfærd. De er klikkbare og simulerer navigationsflow og centrale funktioner.</p>
+          <p>Laves i værktøjer som <strong>Figma, Adobe XD eller Marvel</strong>. De bruges til mere realistiske brugertests, til at kommunikere designbeslutninger internt og til præsentationer for kunder og interessenter.</p>
+          <p>Fordelen er høj <strong>troværdighed</strong> — ulempen er, at de tager tid at bygge og kan føles "færdige", selvom de ikke er det.</p>
+        </div></div></div>
+      </div>
+
+      <div class="card" onclick="toggle(this)">
+        <div class="card-top">
+          <div class="card-title">Prototyping som metode</div>
+          <svg class="card-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+        <div class="card-desc">Prototypen som kommunikationsværktøj over for brugere og interessenter, og dens rolle i kravindsamlingsprocessen.</div>
+        <div class="card-details"><div class="card-details-inner"><div class="card-details-body">
+          <p>Prototyping er en systematisk metode til at <strong>reducere usikkerhed tidligt</strong>. Cyklussen <em>byg → test → lær</em> gentages, indtil man forstår brugernes reelle behov.</p>
+          <p>En prototype kan afdække misforståelser der aldrig ville fremgå af et kravdokument. <strong>"Show, don't tell"</strong> — det er langt nemmere for en bruger at reagere på noget konkret end at besvare abstrakte spørgsmål.</p>
+          <p>Prototypen fungerer desuden som <strong>bro mellem kravspecifikation og implementering</strong>: den oversætter kravene til en visuel og interaktiv form, alle kan forholde sig til.</p>
+        </div></div></div>
+      </div>
+
+      <div class="card" onclick="toggle(this)">
+        <div class="card-top">
+          <div class="card-title">Prototype-typer</div>
+          <svg class="card-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+        <div class="card-desc">De fire anerkendte tilgange: Throwaway, Evolutionary, Incremental og Extreme prototyping.</div>
+        <div class="card-details"><div class="card-details-inner"><div class="card-details-body">
+          <p><strong>Throwaway prototyping</strong> — Prototypen bruges udelukkende til at afklare krav og idéer, og indgår ikke i det endelige produkt. Når den har gjort sit arbejde, kasseres den. Hurtig og billig metode til at teste koncepter tidligt.</p>
+          <p><strong>Evolutionary prototyping</strong> — Prototypen forbedres kontinuerligt baseret på feedback og vokser gradvist til det færdige system. Beslægtet med agile metoder: man bygger aldrig fra bunden, men raffinerer løbende det eksisterende.</p>
+          <p><strong>Incremental prototyping</strong> — Det færdige produkt bygges op af separate, selvstændige prototyper der hver dækker en del af systemet. Delene integreres til sidst til ét samlet system. Velegnet til store projekter der kan opdeles i uafhængige moduler.</p>
+          <p><strong>Extreme prototyping</strong> — Udviklet specifikt til web- og internetapplikationer med fokus på UI. Opdelt i tre faser: (1) statisk HTML-prototype, (2) simulerede services og interaktion, (3) implementering af de reelle services. Sikrer at brugergrænsefladen er gennemtænkt, inden back-end bygges.</p>
+        </div></div></div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ══ Modul 3 ══ -->
+  <section class="module m3">
+    <div class="module-header">
+      <div class="module-number">03</div>
+      <span class="module-title">Krav, Accepttest &amp; UML</span>
+    </div>
+    <div class="topics">
+
+      <div class="card" onclick="toggle(this)">
+        <div class="card-top">
+          <div class="card-title">Kravspecifikation</div>
+          <svg class="card-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+        <div class="card-desc">Struktureret dokumentation af, hvad et system skal gøre — baseret på kravskabeloner og brugerhistorier.</div>
+        <div class="card-details"><div class="card-details-inner"><div class="card-details-body">
+          <p>En kravspecifikation er et <strong>formelt dokument</strong> der beskriver, hvad et system skal gøre og under hvilke betingelser. Den fungerer som kontrakt mellem kunde og udvikler.</p>
+          <p>Typisk indhold: <strong>formål og baggrund, interessenter, systemgrænse (scope), funktionelle krav, ikke-funktionelle krav, use cases og acceptkriterier</strong>.</p>
+          <p>Skrives ud fra en <strong>kravskabelon</strong> for at sikre konsistens. En god kravspecifikation er komplet, entydig, testbar og prioriteret.</p>
+        </div></div></div>
+      </div>
+
+      <div class="card" onclick="toggle(this)">
+        <div class="card-top">
+          <div class="card-title">Funktionelle krav</div>
+          <svg class="card-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+        <div class="card-desc">De konkrete handlinger og funktioner systemet skal udføre: hvad brugeren kan gøre, og hvad systemet skal svare.</div>
+        <div class="card-details"><div class="card-details-inner"><div class="card-details-body">
+          <p>Funktionelle krav beskriver <strong>systemets adfærd</strong> — hvad det skal kunne gøre i forskellige situationer. De formuleres typisk som: <em>"Systemet skal kunne [handling]"</em>.</p>
+          <p>Eksempel: <em>"Systemet skal automatisk registrere toilettets tilstand efter hvert besøg og sammenligne med tilstanden før besøget."</em></p>
+          <p>Hvert krav bør være <strong>målbart og testbart</strong>, så det klart fremgår, hvornår kravet er opfyldt. Funktionelle krav mappes direkte til use cases og accepttestcases.</p>
+        </div></div></div>
+      </div>
+
+      <div class="card" onclick="toggle(this)">
+        <div class="card-top">
+          <div class="card-title">Ikke-funktionelle krav</div>
+          <svg class="card-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+        <div class="card-desc">Krav til systemets kvaliteter såsom ydeevne, sikkerhed, tilgængelighed og vedligeholdbarhed.</div>
+        <div class="card-details"><div class="card-details-inner"><div class="card-details-body">
+          <p>Ikke-funktionelle krav sætter rammer for <strong>systemets kvaliteter</strong>, ikke dets funktioner. De er ofte afgørende for om systemet er brugbart i praksis.</p>
+          <p>Kategorier inkluderer: <strong>Ydeevne</strong> (svartider, kapacitet), <strong>Sikkerhed</strong> (adgangskontrol, GDPR), <strong>Tilgængelighed</strong> (oppetid, WCAG), <strong>Skalerbarhed</strong> og <strong>Vedligeholdbarhed</strong>.</p>
+          <p>Eksempel: <em>"Systemet skal have en oppetid på mindst 99,5% i driftstiden."</em> Disse krav er sværere at teste end funktionelle krav, men mindst lige så vigtige.</p>
+        </div></div></div>
+      </div>
+
+      <div class="card" onclick="toggle(this)">
+        <div class="card-top">
+          <div class="card-title">Use cases</div>
+          <svg class="card-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+        <div class="card-desc">Beskrivelse af interaktionen mellem aktør og system i konkrete scenarieforløb med hoved- og alternativscenarier.</div>
+        <div class="card-details"><div class="card-details-inner"><div class="card-details-body">
+          <p>En use case beskriver ét specifikt interaktionsforløb mellem en <strong>aktør</strong> (bruger eller eksternt system) og systemet med henblik på at nå et mål.</p>
+          <p>Standardskabelon indeholder: <strong>Navn, aktør, forudsætning, hovedscenarie (trin-for-trin), alternativscenarier og efterbetingelse</strong>.</p>
+          <p>Alternativscenarier dækker fejlsituationer og undtagelser — f.eks. hvad sker der, hvis kameraet ikke kan tage et snapshot? Use cases sikrer, at alle realistiske brugssituationer er gennemtænkt, inden systemet bygges.</p>
+        </div></div></div>
+      </div>
+
+      <div class="card" onclick="toggle(this)">
+        <div class="card-top">
+          <div class="card-title">UML-diagrammer</div>
+          <svg class="card-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+        <div class="card-desc">Visuelle modeller af systemet — herunder use case-diagram, sekvensdiagram og klassediagram — som fællessprog mellem udviklere og kunder.</div>
+        <div class="card-details"><div class="card-details-inner"><div class="card-details-body">
+          <p><strong>UML (Unified Modeling Language)</strong> er et standardiseret visuelt sprog til modellering af software-systemer. Det skaber fælles forståelse på tværs af faggrupper.</p>
+          <p><strong>Use case-diagram</strong> — viser hvilke aktører der interagerer med hvilke funktioner i systemet. Godt til overblik over systemets grænse.</p>
+          <p><strong>Sekvensdiagram</strong> — viser rækkefølgen af beskeder og handlinger over tid mellem aktører og systemkomponenter.</p>
+          <p><strong>Klassediagram</strong> — viser systemets datastruktur: klasser, attributter, metoder og relationer. Bruges som grundlag for databasedesign og implementering.</p>
+        </div></div></div>
+      </div>
+
+      <div class="card" onclick="toggle(this)">
+        <div class="card-top">
+          <div class="card-title">Accepttest</div>
+          <svg class="card-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+        <div class="card-desc">Testcases der verificerer, om systemet lever op til de stillede krav — skrevet ud fra kravspecifikationen og brugt til godkendelse.</div>
+        <div class="card-details"><div class="card-details-inner"><div class="card-details-body">
+          <p>En accepttest er en <strong>struktureret test</strong>, der verificerer om systemet opfylder de opstillede krav inden aflevering eller idriftsættelse.</p>
+          <p>Hvert krav fra kravspecifikationen oversættes til én eller flere testcases. En testcase indeholder: <strong>ID, beskrivelse, forudsætning, input/handling, forventet resultat og faktisk resultat</strong>.</p>
+          <p>Accepttesten skrives af kunden eller en neutral part — ikke af udviklerne selv. Består systemet accepttesten, er kravet formelt opfyldt, og systemet kan godkendes.</p>
+        </div></div></div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ══ Modul 4 ══ -->
+  <section class="module m4">
+    <div class="module-header">
+      <div class="module-number">04</div>
+      <span class="module-title">Fremlæggelse &amp; Dokumentation</span>
+    </div>
+    <div class="topics">
+
+      <div class="card" onclick="toggle(this)">
+        <div class="card-top">
+          <div class="card-title">Kravdokumentation</div>
+          <svg class="card-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+        <div class="card-desc">Samling og strukturering af al dokumentation: kravspecifikation, UML, prototype og accepttest i ét samlet produkt.</div>
+        <div class="card-details"><div class="card-details-inner"><div class="card-details-body">
+          <p>Den samlede dokumentationspakke er bevis for det arbejde, gruppen har udført. Den inkluderer: <strong>kravspecifikation, UML-diagrammer, prototype (screenshots/link) og accepttest</strong>.</p>
+          <p>God dokumentation er <strong>struktureret, ensartet og let at navigere</strong> — skrevet til en faglig modtager der ikke kender projektet i forvejen. Brug sidetal, indholdsfortegnelse og klare overskrifter.</p>
+          <p>Dokumentationen skal afspejle det faktisk udførte arbejde — ikke et ideelt forløb. Afvigelser og fravalg skal beskrives og begrundes.</p>
+        </div></div></div>
+      </div>
+
+      <div class="card" onclick="toggle(this)">
+        <div class="card-top">
+          <div class="card-title">Fremlæggelsesteknik</div>
+          <svg class="card-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+        <div class="card-desc">Præsentation af projektet for en faglig modtager — formidling af de centrale valg og resultater på en klar og overbevisende måde.</div>
+        <div class="card-details"><div class="card-details-inner"><div class="card-details-body">
+          <p>En faglig fremlæggelse kræver struktur: <strong>præsentér problemet → løsningen → de vigtigste beslutninger og begrundelser</strong>. Undgå at gennemgå alt — prioritér det væsentlige.</p>
+          <p>Brug <strong>visuelle hjælpemidler</strong>: slides, prototype-demo, UML-diagrammer. Tal til modtageren, ikke til skærmen. Hold øjenkontakt og tilpas sprog til publikum.</p>
+          <p>Vær forberedt på spørgsmål — det er her den faglige forståelse vises. Kan du begrunde dine valg og forklare alternativer du fravalgte, demonstrerer du dyb indsigt i emnet.</p>
+        </div></div></div>
+      </div>
+
+    </div>
+  </section>
+
+  <footer>Kravspecifikation Forår 2026 &mdash; Techcollege</footer>
+
+  <script>
+    function toggle(card) {
+      card.classList.toggle('open');
+    }
+  </script>
+
+</body>
+</html>

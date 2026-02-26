@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fag — Techcollege Forår 2026</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:      #0f1117;
+      --surface: #1a1d27;
+      --border:  #2a2d3a;
+      --text:    #e2e4ed;
+      --muted:   #8b8fa8;
+      --c1:      #6c8cff;
+      --c2:      #ff7c5c;
+      --c3:      #4ecf9b;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Segoe UI', system-ui, sans-serif;
+      font-size: 15px;
+      line-height: 1.65;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 3rem 1.5rem;
+    }
+
+    /* ── Header ── */
+    header {
+      text-align: center;
+      margin-bottom: 3.5rem;
+    }
+    .eyebrow {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 0.6rem;
+    }
+    h1 {
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+    }
+    h1 span {
+      background: linear-gradient(90deg, var(--c1), var(--c3));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    header p {
+      margin-top: 1rem;
+      color: var(--muted);
+    }
+
+    /* ── Grid ── */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.25rem;
+      width: 100%;
+      max-width: 960px;
+    }
+
+    /* ── Course card ── */
+    .course {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 2rem 2rem 1.75rem;
+      text-decoration: none;
+      color: inherit;
+      position: relative;
+      overflow: hidden;
+      transition: transform .22s ease, border-color .22s ease, box-shadow .22s ease;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    .course:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 40px rgba(0,0,0,.45);
+    }
+    .course.c1:hover { border-color: var(--c1); }
+    .course.c2:hover { border-color: var(--c2); }
+    .course.c3:hover { border-color: var(--c3); }
+
+    /* top gradient bar */
+    .course::before {
+      content: '';
+      position: absolute;
+      inset: 0 0 auto 0;
+      height: 3px;
+      border-radius: 16px 16px 0 0;
+    }
+    .course.c1::before { background: linear-gradient(90deg, var(--c1), color-mix(in srgb, var(--c1) 40%, var(--c3))); }
+    .course.c2::before { background: linear-gradient(90deg, var(--c2), color-mix(in srgb, var(--c2) 40%, #f5a623)); }
+    .course.c3::before { background: linear-gradient(90deg, var(--c3), color-mix(in srgb, var(--c3) 40%, var(--c1))); }
+
+    /* badge */
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.3rem 0.65rem;
+      border-radius: 99px;
+      width: fit-content;
+    }
+    .c1 .badge { background: color-mix(in srgb, var(--c1) 15%, transparent); color: var(--c1); }
+    .c2 .badge { background: color-mix(in srgb, var(--c2) 15%, transparent); color: var(--c2); }
+    .c3 .badge { background: color-mix(in srgb, var(--c3) 15%, transparent); color: var(--c3); }
+
+    .course-title {
+      font-size: 1.35rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+    }
+
+    .course-desc {
+      font-size: 0.875rem;
+      color: var(--muted);
+      line-height: 1.6;
+      flex: 1;
+    }
+
+    .course-topics {
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-top: 0.25rem;
+    }
+    .course-topics li {
+      font-size: 0.72rem;
+      color: var(--muted);
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 0.2rem 0.55rem;
+    }
+
+    .course-cta {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.82rem;
+      font-weight: 600;
+      margin-top: 0.25rem;
+      transition: gap .2s;
+    }
+    .c1 .course-cta { color: var(--c1); }
+    .c2 .course-cta { color: var(--c2); }
+    .c3 .course-cta { color: var(--c3); }
+    .course:hover .course-cta { gap: 0.7rem; }
+
+    /* ── Footer ── */
+    footer {
+      margin-top: 4rem;
+      color: var(--muted);
+      font-size: 0.78rem;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <p class="eyebrow">Techcollege · Forår 2026</p>
+    <h1>Vælg et <span>fag</span></h1>
+    <p>Klik på et fag for at se emneoversigt og fagligt indhold.</p>
+  </header>
+
+  <div class="grid">
+
+    <!-- Kravspecifikation -->
+    <a class="course c1" href="kravspecifikation.html">
+      <span class="badge">Fag 1</span>
+      <div class="course-title">Kravspecifikation</div>
+      <p class="course-desc">Systemudviklingsmodeller, kravindsamling, prototyping, UML-diagrammer, accepttest og teknisk dokumentation.</p>
+      <ul class="course-topics">
+        <li>Modeller &amp; Metoder</li>
+        <li>Prototyping</li>
+        <li>Krav &amp; UML</li>
+        <li>Accepttest</li>
+        <li>Dokumentation</li>
+      </ul>
+      <div class="course-cta">
+        Se emneoversigt
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </div>
+    </a>
+
+    <!-- Metodik -->
+    <a class="course c2" href="metodik.html">
+      <span class="badge">Fag 2</span>
+      <div class="course-title">Metodik</div>
+      <p class="course-desc">Agile udviklingsmetoder, Scrum-framework, Extreme Programming, Test Driven Development og User Stories.</p>
+      <ul class="course-topics">
+        <li>Agilt manifest</li>
+        <li>Scrum</li>
+        <li>XP &amp; TDD</li>
+        <li>User Stories</li>
+        <li>Planning Poker</li>
+      </ul>
+      <div class="course-cta">
+        Se emneoversigt
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </div>
+    </a>
+
+    <!-- Softwaretest & Sikkerhed -->
+    <a class="course c3" href="softwaretest-sikkerhed.html">
+      <span class="badge">Fag 3</span>
+      <div class="course-title">Softwaretest &amp; Sikkerhed</div>
+      <p class="course-desc">Unit testing, GUI- og systemtest med Playwright, integrationstest, regressionstest og sikkerhed i software.</p>
+      <ul class="course-topics">
+        <li>Unit Testing</li>
+        <li>GUI &amp; Systemtest</li>
+        <li>Playwright</li>
+        <li>Integrationstest</li>
+        <li>Sikkerhed</li>
+      </ul>
+      <div class="course-cta">
+        Se emneoversigt
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </div>
+    </a>
+
+  </div>
+
+  <footer>Techcollege &mdash; Forår 2026</footer>
+
+</body>
+</html>

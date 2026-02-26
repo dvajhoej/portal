@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Emner — Metodik Forår 2026</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:        #0f1117;
+      --surface:   #1a1d27;
+      --border:    #2a2d3a;
+      --text:      #e2e4ed;
+      --muted:     #8b8fa8;
+      --c1:        #6c8cff;
+      --c2:        #ff7c5c;
+      --c3:        #4ecf9b;
+      --c4:        #f5a623;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Segoe UI', system-ui, sans-serif;
+      font-size: 15px;
+      line-height: 1.65;
+      padding: 3rem 1.5rem 6rem;
+    }
+
+    /* ── Header ── */
+    header {
+      max-width: 860px;
+      margin: 0 auto 3.5rem;
+      text-align: center;
+    }
+    header .eyebrow {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 0.6rem;
+    }
+    header h1 {
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      line-height: 1.15;
+    }
+    header h1 span {
+      background: linear-gradient(90deg, var(--c1), var(--c3));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    header p {
+      margin-top: 1rem;
+      color: var(--muted);
+      max-width: 480px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* ── Module sections ── */
+    .module {
+      max-width: 860px;
+      margin: 0 auto 3rem;
+    }
+
+    .module-header {
+      display: flex;
+      align-items: center;
+      gap: 0.9rem;
+      margin-bottom: 1rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .module-number {
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      display: grid;
+      place-items: center;
+      font-size: 0.75rem;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+    .m1 .module-number { background: color-mix(in srgb, var(--c1) 18%, transparent); color: var(--c1); }
+    .m2 .module-number { background: color-mix(in srgb, var(--c2) 18%, transparent); color: var(--c2); }
+    .m3 .module-number { background: color-mix(in srgb, var(--c3) 18%, transparent); color: var(--c3); }
+    .m4 .module-number { background: color-mix(in srgb, var(--c4) 18%, transparent); color: var(--c4); }
+
+    .module-title {
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    /* ── Topic grid ── */
+    .topics {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 0.9rem;
+    }
+
+    /* ── Card ── */
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.2rem 1.3rem;
+      position: relative;
+      overflow: hidden;
+      transition: border-color .2s, transform .2s;
+      cursor: pointer;
+      user-select: none;
+    }
+    .card:hover {
+      transform: translateY(-2px);
+    }
+
+    .m1 .card:hover, .m1 .card.open { border-color: var(--c1); }
+    .m2 .card:hover, .m2 .card.open { border-color: var(--c2); }
+    .m3 .card:hover, .m3 .card.open { border-color: var(--c3); }
+    .m4 .card:hover, .m4 .card.open { border-color: var(--c4); }
+
+    /* left accent stripe */
+    .card::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 12px; bottom: 12px;
+      width: 3px;
+      border-radius: 0 3px 3px 0;
+    }
+    .m1 .card::before { background: var(--c1); }
+    .m2 .card::before { background: var(--c2); }
+    .m3 .card::before { background: var(--c3); }
+    .m4 .card::before { background: var(--c4); }
+
+    /* ── Card top row ── */
+    .card-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 0.5rem;
+    }
+
+    .card-title {
+      font-weight: 600;
+      font-size: 0.95rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .card-chevron {
+      flex-shrink: 0;
+      width: 18px;
+      height: 18px;
+      margin-top: 1px;
+      color: var(--muted);
+      transition: transform .25s, color .2s;
+    }
+    .card.open .card-chevron {
+      transform: rotate(180deg);
+    }
+    .m1 .card.open .card-chevron { color: var(--c1); }
+    .m2 .card.open .card-chevron { color: var(--c2); }
+    .m3 .card.open .card-chevron { color: var(--c3); }
+    .m4 .card.open .card-chevron { color: var(--c4); }
+
+    .card-desc {
+      font-size: 0.85rem;
+      color: var(--muted);
+      line-height: 1.55;
+    }
+
+    /* ── Expandable details ── */
+    .card-details {
+      display: grid;
+      grid-template-rows: 0fr;
+      transition: grid-template-rows .28s ease;
+    }
+    .card.open .card-details {
+      grid-template-rows: 1fr;
+    }
+    .card-details-inner {
+      overflow: hidden;
+    }
+    .card-details-body {
+      margin-top: 0.85rem;
+      padding-top: 0.85rem;
+      border-top: 1px solid var(--border);
+      font-size: 0.85rem;
+      color: var(--muted);
+      line-height: 1.65;
+    }
+    .card-details-body p + p {
+      margin-top: 0.55rem;
+    }
+    .card-details-body strong {
+      color: var(--text);
+      font-weight: 600;
+    }
+
+    /* ── Footer ── */
+    footer {
+      text-align: center;
+      margin-top: 4rem;
+      color: var(--muted);
+      font-size: 0.78rem;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <p class="eyebrow">Techcollege · Forår 2026</p>
+    <h1>Emner i faget<br><span>Metodik</span></h1>
+    <p>Oversigt over de gennemgåede emner i agile udviklingsmetoder. Klik på et emne for uddybende forklaring.</p>
+  </header>
+
+  <!-- ══ Modul 1 ══ -->
+  <section class="module m1">
+    <div class="module-header">
+      <div class="module-number">01</div>
+      <span class="module-title">Agile Grundlag</span>
+    </div>
+    <div class="topics">
+
+      <div class="card" onclick="toggle(this)">
+        <div class="card-top">
+          <div class="card-title">Agilt manifest &amp; principper</div>
+          <svg class="card-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+        <div class="card-desc">De grundlæggende værdier og 12 principper bag agil softwareudvikling — og hvad de betyder i praksis.</div>
+        <div class="card-details"><div class="card-details-inner"><div class="card-details-body">
+          <p><strong>Det agile manifest</strong> fra 2001 opstiller fire kerneprioriteter: individer og interaktion over processer og værktøjer, fungerende software over omfattende dokumentation, kundesamarbejde over kontraktforhandling, og reaktion på forandring over at følge en plan.</p>
+          <p>De <strong>12 agile principper</strong> uddyber manifestet. Centrale principper er: tidlig og løbende levering af værdifuld software, velkomst til skiftende krav, tæt dagligt samarbejde, motiverede enkeltpersoner og bæredygtigt tempo.</p>
+          <p>Manifestet er et <strong>holdningsdokument</strong> — det erstatter ikke planlægning og dokumentation, men sætter dem i perspektiv i forhold til det egentlige mål: at levere software der skaber værdi.</p>
+        </div></div></div>
+      </div>
+
+      <div class="card" onclick="toggle(this)">
+        <div class="card-top">
+          <div class="card-title">Agile metoder &amp; rammer</div>
+          <svg class="card-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+        <div class="card-desc">Overblik over de mest udbredte agile metoder og redskaber, og hvornår man anvender dem.</div>
+        <div class="card-details"><div class="card-details-inner"><div class="card-details-body">
+          <p>Agile rammer er konkrete implementeringer af de agile principper. De mest udbredte er <strong>Scrum</strong> (iterativ projektledelse), <strong>Kanban</strong> (flow-baseret arbejdsstyring) og <strong>Extreme Programming (XP)</strong> (fokus på kodekvalitet og tekniske praksisser).</p>
+          <p>Fælles for alle agile metoder er <strong>kortere cyklusser</strong>, hyppig feedback og løbende tilpasning. Valget af metode afhænger af teamstørrelse, kravstabilitet og organisationens modenhed.</p>
+          <p>Typiske agile <strong>redskaber</strong> inkluderer taskboards, burndown charts, daily standups, retrospektiver og User Stories — alle designet til at synliggøre fremdrift og fjerne forhindringer.</p>
+        </div></div></div>
+      </div>
+
+      <div class="card" onclick="toggle(this)">
+        <div class="card-top">
+          <div class="card-title">Introduktion til faget</div>
+          <svg class="card-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+        <div class="card-desc">Fagets læringsmål, opbygning og den skriftlige opgave om agil udviklingsmetode.</div>
+        <div class="card-details"><div class="card-details-inner"><div class="card-details-body">
+          <p>Faget Metodik giver et <strong>systematisk overblik over agile tilgange</strong> til softwareudvikling. Målepindene dækker: det agile manifest og principper, Scrum, Extreme Programming og Test Driven Development.</p>
+          <p>Den <strong>skriftlige opgave</strong> er en maks. fem siders beskrivelse af en agil udviklingsmetode, afleveret i PDF. Opgaven demonstrerer evnen til at forklare og anvende de gennemgåede begreber og metoder.</p>
+          <p>Undervisningen er praktisk orienteret — begreber introduceres og sættes derefter ind i konkrete <strong>udviklingsscenarier</strong>, så sammenhængen mellem teori og daglig arbejdspraksis bliver tydelig.</p>
+        </div></div></div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ══ Modul 2 ══ -->
+  <section class="module m2">
+    <div class="module-header">
+      <div class="module-number">02</div>
+      <span class="module-title">Scrum Framework</span>
+    </div>
+    <div class="topics">
+
+      <div class="card" onclick="toggle(this)">
+        <div class="card-top">
+          <div class="card-title">Scrum-roller</div>
+          <svg class="card-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+        <div class="card-desc">De tre definerede roller i Scrum: Product Owner, Scrum Master og Scrum Team — og ansvarsfordelingen mellem dem.</div>
+        <div class="card-details"><div class="card-details-inner"><div class="card-details-body">
+          <p><strong>Product Owner</strong> repræsenterer kunden og forretningen. PO ejer Product Backlog, prioriterer opgaver og sikrer at teamet arbejder med det, der skaber mest forretningsværdi.</p>
+          <p><strong>Scrum Master</strong> er facilitator og coach — ikke leder. SM fjerner forhindringer, sikrer at Scrum-processen følges, og hjælper teamet med løbende at forbedre sig. SM beskytter teamet fra forstyrrelser udefra.</p>
+          <p><strong>Scrum Team</strong> er et selvorganiserende, tværfagligt team der planlægger og udfører arbejdet. Teamet bestemmer selv, hvordan opgaverne løses, og er kollektivt ansvarlig for leverancen.</p>
+        </div></div></div>
+      </div>
+
+      <div class="card" onclick="toggle(this)">
+        <div class="card-top">
+          <div class="card-title">Scrum-ceremonier</div>
+          <svg class="card-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+        <div class="card-desc">De tre faste mødetyper i Scrum: Sprint Planning, Daily Scrum og Sprint Review — formål, deltagere og varighed.</div>
+        <div class="card-details"><div class="card-details-inner"><div class="card-details-body">
+          <p><strong>Sprint Planning Workshop</strong> afholdes i starten af hvert sprint. Teamet vælger opgaver fra Product Backlog og nedbryder dem til konkrete aktiviteter. Resultatet er en Sprint Backlog og et sprint-mål.</p>
+          <p><strong>Daily Scrum</strong> er et dagligt 15-minutters standup. Hvert teammedlem besvarer: hvad lavede jeg i går, hvad laver jeg i dag, og er der noget der blokerer mig? Det handler om koordination — ikke statusrapportering.</p>
+          <p><strong>Sprint Review Meeting</strong> afholdes ved sprintets afslutning. Teamet demonstrerer det færdige arbejde for Product Owner og interessenter, modtager feedback og justerer backloggen herefter.</p>
+        </div></div></div>
+      </div>
+
+      <div class="card" onclick="toggle(this)">
+        <div class="card-top">
+          <div class="card-title">Scrum-værktøjer</div>
+          <svg class="card-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+        <div class="card-desc">Product Backlog, Sprint Backlog og Burndown Chart — de tre centrale styringsværktøjer i Scrum.</div>
+        <div class="card-details"><div class="card-details-inner"><div class="card-details-body">
+          <p><strong>Product Backlog</strong> er en prioriteret liste over alt det, der ønskes i produktet — User Stories, fejlrettelser og forbedringer. Den vedligeholdes af Product Owner og opdateres løbende.</p>
+          <p><strong>Sprint Backlog</strong> er den delmængde af Product Backlog som teamet har forpligtet sig til at levere i det igangværende sprint. Den er teamets plan og må ikke ændres af andre end teamet selv.</p>
+          <p><strong>Burndown Chart</strong> viser den resterende mængde arbejde over tid i et sprint. En faldende kurve mod nul er målet. Afvigelser fra den ideelle linje signalerer tidligt, om sprintet er på sporet.</p>
+        </div></div></div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ══ Modul 3 ══ -->
+  <section class="module m3">
+    <div class="module-header">
+      <div class="module-number">03</div>
+      <span class="module-title">Extreme Programming &amp; TDD</span>
+    </div>
+    <div class="topics">
+
+      <div class="card" onclick="toggle(this)">
+        <div class="card-top">
+          <div class="card-title">Extreme Programming (XP)</div>
+          <svg class="card-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+        <div class="card-desc">En agil metode med fokus på kodekvalitet, hyppige releases og tæt samarbejde — herunder Pair Programming og de fire grundaktiviteter.</div>
+        <div class="card-details"><div class="card-details-inner"><div class="card-details-body">
+          <p><strong>Extreme Programming (XP)</strong> er en agil metode der "skruer op" for god praksis til ekstremer. XPs fire grundaktiviteter er: <em>Coding</em> (konstant, feedback-drevet), <em>Testing</em> (altid automatiseret), <em>Listening</em> (tæt dialog med kunden) og <em>Designing</em> (simpelt, refaktoreret løbende).</p>
+          <p><strong>Pair Programming</strong> er to udviklere ved én computer: én skriver kode (driver), én reviewer og tænker fremad (navigator). Rollerne skiftes jævnligt. Det reducerer fejl, spreder viden og øger kodekvaliteten.</p>
+          <p>XP lægger desuden vægt på <strong>kontinuerlig integration, simpelt design, kodestandarder og hyppige small releases</strong> — alt sammen med det mål at holde kodebasen sund og leverancerne forudsigelige.</p>
+        </div></div></div>
+      </div>
+
+      <div class="card" onclick="toggle(this)">
+        <div class="card-top">
+          <div class="card-title">Test Driven Development (TDD)</div>
+          <svg class="card-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+        <div class="card-desc">Udviklingsmetode hvor tests skrives før koden — Red-Green-Refactor-cyklussen og dens effekt på design og kvalitet.</div>
+        <div class="card-details"><div class="card-details-inner"><div class="card-details-body">
+          <p><strong>Test Driven Development (TDD)</strong> vender den traditionelle rækkefølge på hovedet: skriv en test der fejler (<em>Red</em>), skriv netop nok kode til at testen passerer (<em>Green</em>), og ryd derefter koden op uden at bryde testen (<em>Refactor</em>).</p>
+          <p>TDD er ikke primært en teststrategi — det er en <strong>designmetode</strong>. At skrive testen først tvinger udvikleren til at tænke over grænseflader og adfærd, inden implementeringen begynder. Resultatet er typisk mere modulært og testvenligt design.</p>
+          <p>En komplet testpakke fra TDD giver desuden et <strong>sikkerhedsnet</strong>: fremtidige ændringer og refaktoreringer kan foretages trygt, fordi fejl fanges automatisk og øjeblikkeligt.</p>
+        </div></div></div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ══ Modul 4 ══ -->
+  <section class="module m4">
+    <div class="module-header">
+      <div class="module-number">04</div>
+      <span class="module-title">User Stories &amp; Planning Poker</span>
+    </div>
+    <div class="topics">
+
+      <div class="card" onclick="toggle(this)">
+        <div class="card-top">
+          <div class="card-title">User Stories</div>
+          <svg class="card-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+        <div class="card-desc">Korte, brugercentrerede kravbeskrivelser der danner grundlaget for Product Backlog og sprint-planlægning.</div>
+        <div class="card-details"><div class="card-details-inner"><div class="card-details-body">
+          <p>En User Story er en kort beskrivelse af en funktion fra brugerens perspektiv: <strong>"Som [rolle] ønsker jeg [hvad] for at [hvorfor]."</strong> Formatet sikrer, at kravene er forankret i et reelt brugerbehov og ikke blot tekniske ønskelister.</p>
+          <p>Gode User Stories følger <strong>INVEST-kriterierne</strong>: Independent (uafhængige), Negotiable (forhandlingsbare), Valuable (værdifulde), Estimable (estimerbare), Small (håndterbare) og Testable (testbare).</p>
+          <p>Hver User Story suppleres med <strong>acceptkriterier</strong>, der præciserer hvornår historien er "done". Dette skaber fælles forventning mellem Product Owner og teamet og reducerer misforståelser.</p>
+        </div></div></div>
+      </div>
+
+      <div class="card" onclick="toggle(this)">
+        <div class="card-top">
+          <div class="card-title">Planning Poker</div>
+          <svg class="card-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+        <div class="card-desc">Konsensusbaseret estimeringsteknik hvor hele teamet deltager — og hvorfor divergerende estimater er en styrke.</div>
+        <div class="card-details"><div class="card-details-inner"><div class="card-details-body">
+          <p><strong>Planning Poker</strong> er en agil estimeringsteknik. Hvert teammedlem har et sæt kort med tal fra Fibonacci-sekvensen (1, 2, 3, 5, 8, 13…). For hvert emne vælger alle et kort — og viser det samtidigt, så ingen påvirkes af andres valg.</p>
+          <p>Hvis estimaterne afviger meget, diskuterer teamet begrundelserne: dem med lavest og højest estimat forklarer deres tankegang. Processen afdækker <strong>skjulte antagelser og risici</strong>, der ellers ville forblive usynlige.</p>
+          <p>Planning Poker estimerer <strong>relativ kompleksitet</strong> (Story Points), ikke timer. Et element med 8 point er dobbelt så komplekst som et med 4 — det er teamets kollektive forståelse af opgaven, der kvantificeres, ikke den reelle tidsforbrug.</p>
+        </div></div></div>
+      </div>
+
+      <div class="card" onclick="toggle(this)">
+        <div class="card-top">
+          <div class="card-title">Agilt scenarie i praksis</div>
+          <svg class="card-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+        <div class="card-desc">Sammensætning af Scrum og XP i et konkret udviklingsscenarie — fra Product Backlog til leveret sprint.</div>
+        <div class="card-details"><div class="card-details-inner"><div class="card-details-body">
+          <p>Et komplet agilt scenarie kombinerer metodernes styrker: <strong>Scrum</strong> styrer processen og planlægningen (roller, ceremonier, backlog), mens <strong>XP</strong> sikrer kodekvaliteten (TDD, pair programming, kontinuerlig integration).</p>
+          <p>Forløbet starter med at <strong>Product Owner</strong> prioriterer Product Backlog baseret på forretningsværdi. Under Sprint Planning estimerer teamet med Planning Poker og vælger User Stories til sprintet. Under sprintet anvendes TDD og Pair Programming til implementeringen.</p>
+          <p>Sprintet afsluttes med <strong>Sprint Review</strong> (demo for interessenter) og <strong>Retrospektiv</strong> (teamets selvevaluering). Processen gentages — hvert sprint leverer noget brugbart og skaber grundlag for forbedring.</p>
+        </div></div></div>
+      </div>
+
+    </div>
+  </section>
+
+  <footer>Metodik Forår 2026 &mdash; Techcollege</footer>
+
+  <script>
+    function toggle(card) {
+      card.classList.toggle('open');
+    }
+  </script>
+
+</body>
+</html>
